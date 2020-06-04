@@ -19,7 +19,7 @@ class EditItem extends React.Component{
         return(
             <div>
                 <h3>Edit Item</h3>
-                <ItemForm onSubmit={this.onSubmit} initialValues={_.pick(this.props.item, 'itemName','itemDesc','itemPrice')}/>
+                <ItemForm onSubmit={this.onSubmit} initialValues={_.pick(this.props.item, 'itemName','itemDesc','itemPrice','quantity')}/>
             </div>
         )
     }

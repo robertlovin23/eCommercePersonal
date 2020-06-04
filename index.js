@@ -7,6 +7,7 @@ const cookieSession = require('cookie-session');
 require('./models/Items');
 require('./models/Cart');
 require('./models/Users');
+require('./models/Payments')
 require('./services/passportGitHub');
 
 const app = express();
@@ -24,7 +25,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/itemRoutes')(app);
+require('./routes/payRoutes')(app);
 require('./routes/cartRoutes')(app);   
+require('./routes/userRoutes')(app);
 require('./routes/authRoutes')(app);
 
 mongoose.connect(keys.mongoURI);

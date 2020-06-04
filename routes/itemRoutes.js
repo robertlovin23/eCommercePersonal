@@ -12,8 +12,10 @@ module.exports = app => {
             itemDesc: req.body.itemDesc,
             twitterId: req.body.twitterId,
             likesAdded: req.body.likesAdded,
-            usersLiked: req.body.usersLiked
+            usersLiked: req.body.usersLiked,
+            itemQty: req.body.itemQty
         }).save();
+        console.log(req.body)
 
         res.json(item)
     });
@@ -21,25 +23,26 @@ module.exports = app => {
     app.patch('/api/likes/:id', requireLogin, async (req,res) => {
         console.log(req.user)
         var id = req.params.id
-            await Item.update(
-                {_id: id}, 
-                {
-                    $inc: { likesAdded: 1 },
-                    $set: { usersLiked: req.user._id },
-                    
-                }
-            )
+                await Item.update(
+                    {_id: id},
+                        {
+                            $inc: { likesAdded: 1 },
+                            $addToSet: { usersLiked: req.user._id },
+                            
+                        }
+                    )
+            
     })
 
     app.patch('/api/likes/:id/delete', requireLogin, async (req,res) => {
         var id = req.params.id
-        await Item.update(
-            {_id: id },
-            {
-                $inc: { likesAdded: -1 },
-                $pull: { usersLiked: req.user._id}
-            }
-        )
+            await Item.update(
+                {_id: id },
+                {
+                    $inc: { likesAdded: -1 },
+                    $pull: { usersLiked: req.user._id}
+                }
+            )
     })
 
     app.get('/api/items', async (req,res) => {

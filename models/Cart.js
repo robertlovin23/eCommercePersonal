@@ -5,13 +5,17 @@ const cartSchema = new Schema({
     customerId: {
         type: Schema.Types.ObjectId, ref: 'users', require: true, unique: true
     },
-    cartContents: [
-        {type: Schema.Types.ObjectId, ref: 'item', unique: true}
-    ],
-    itemCount: {type: Number, default: 0},
+    cartContents: [{
+        itemIds: {type: Schema.Types.ObjectId, ref: 'item'},
+        itemPrice: {type: Number, default: 0},
+        itemCount: {type: Number, default: 0},
+    }],
+    totalCount: {type: Number, default: 0},
+    totalPrice: {type: Number, default: 0},
     date: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        expires: 3600
     }
 })
 

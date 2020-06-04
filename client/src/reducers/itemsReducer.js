@@ -1,4 +1,4 @@
-import {FETCH_ITEM, CREATE_ITEM, EDIT_ITEM, FETCH_ITEMS, DELETE_ITEM,ADD_LIKE } from '../actions/types'
+import {FETCH_ITEM, CREATE_ITEM, EDIT_ITEM, FETCH_ITEMS, DELETE_ITEM,ADD_LIKE, DELETE_LIKE } from '../actions/types'
 import _ from 'lodash'
 
 export default (state = {},action) => {
@@ -10,6 +10,8 @@ export default (state = {},action) => {
         case CREATE_ITEM:
             return {...state, [action.payload.id]: action.payload}
         case ADD_LIKE:
+            return {...state, [action.payload.id]: action.payload}
+        case DELETE_LIKE:
             return {...state, [action.payload.id]: action.payload}
         case EDIT_ITEM:
             return {...state, [action.payload.id]: action.payload}

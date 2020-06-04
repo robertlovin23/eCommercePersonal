@@ -22,6 +22,8 @@ class ItemForm extends React.Component{
                     <Field name="itemName" type="text" component={this.renderInputFields} label="Item Name"/> 
                     <Field name="itemPrice" type="number" component={this.renderInputFields} label="Item Price"/> 
                     <Field name="itemDesc" type="text" component={this.renderInputFields} label="Item Description"/> 
+                    {/* <Field name="itemImg" type="text" component={this.renderInputFields} label="Item Image"/>  */}
+                    <Field name="itemQty" type="text" component={this.renderInputFields} label="Item Quantity"/> 
                     <button className="waves-effect waves-light btn" type="submit">Submit</button>
                 </form>
             </div>

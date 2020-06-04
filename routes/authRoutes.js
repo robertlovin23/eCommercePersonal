@@ -18,7 +18,7 @@ module.exports = app => {
 
     app.get('/api/logout', (req,res) => {
         req.logout();
-        res.reidrect('/')
+        res.redirect('/')
         res.send(req.user);
     })
 }

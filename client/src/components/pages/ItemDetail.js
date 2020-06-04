@@ -1,28 +1,49 @@
 import React from 'react'
+import _ from 'lodash'
 import {connect} from 'react-redux'
-import {fetchItem,addToCart,makeCart} from '../../actions'
+import {fetchItem,addToCart,makeCart,fetchUsers} from '../../actions'
 
 // const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 class ItemDetail extends React.Component{
     componentDidMount(){
         this.props.fetchItem(this.props.match.params.id);
+        this.props.fetchUsers();
     }
 
-    onToken = async (token) => {
-        const response = await fetch('/save-stripe-token',{
-            method: 'POST',
-            body: JSON.stringify(token)
-        })
+    showWhoLiked = () =>{
+        if(this.props.item.usersLiked === undefined || _.isEmpty(this.props.user)){
+            return <div>Loading...</div>
+        } else {
 
-        const data = await response.json()
-        alert(`We are in business, ${data.email}`)
-    }
+            var response = this.props.user.map(use => {
+                    return this.props.item.usersLiked.map(like => {
+                        console.log(use.profilePic,this.props.user)
+                        if(use._id === like){
+                            console.log(use.profilePic)
+                            return (
+                                <li style={{marginTop:"20px"}}>
+                                    <img src={use.profilePic} style={{marginBottom:"-20px", marginRight: "10px", borderRadius: "50%"}}/>        
+                                    {use.displayName}
+                                </li>
+
+                            )
+                        }
+                    })       
+                })                    
+                return(
+                    <div>
+                        Liked By:<ul> {response}</ul>
+                    </div>
+                )
+
+            }
+        } 
+
 
 
     fetchItem = () => {
-        this.props.makeCart();
-        this.props.addToCart(this.props.match.params.id);
+        !this.props.cart ? this.props.makeCart() && this.props.addToCart(this.props.match.params.id) : this.props.addToCart(this.props.match.params.id);
     }
 
     render(){
@@ -32,9 +53,7 @@ class ItemDetail extends React.Component{
             )
         }
 
-        const { itemName, itemPrice, itemDesc, _id } = this.props.item
-        // return(
-        //     <div>{item.itemName}</div>
+        const { itemName, itemPrice, itemDesc, _id, usersLiked } = this.props.item
         return(
             <div>
                 <h3>{itemName}</h3>
@@ -42,17 +61,10 @@ class ItemDetail extends React.Component{
                     <b>${itemPrice}</b>
                     <p>{itemDesc}</p>
                 </div>
-                {/* <StripeCheckout
-                    name={itemName}
-                    description={itemDesc}
-                    amount={itemPrice * 100}
-                    token={(token) => this.userPay(token)}
-                    stripeKey = {process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
-                >
-                    <button className="waves-effect waves-light btn">
-                        Pay with Card
-                    </button>
-                </StripeCheckout> */}
+                <div>
+                    {this.showWhoLiked()}
+                </div>
+                <br/>
                 <button className="waves-effect waves-light btn" onClick={this.fetchItem}>
                     Add to Cart
                 </button>
@@ -63,7 +75,9 @@ class ItemDetail extends React.Component{
 
 const mapStateToProps = (state,ownProps) => {
     return{
-        item: state.item
+        item: state.item,
+        cart: state.cart,
+        user: Object.values(state.user)
     }
 }
 
@@ -71,4 +85,5 @@ export default connect(mapStateToProps,{
     fetchItem,
     addToCart,
     makeCart,
+    fetchUsers
 })(ItemDetail)

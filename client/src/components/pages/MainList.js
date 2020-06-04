@@ -1,13 +1,41 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchItems,fetchUser,addLike} from '../../actions'
+import {fetchItems,fetchUser,addLike,deleteLike} from '../../actions'
 
 class MainList extends React.Component{
-
     componentDidMount(){
         this.props.fetchItems();
     }
+
+    renderLikes = (item) => {
+        if(!this.props.auth){
+            return(
+                <div>Loading</div>
+            )
+        } else {
+                const likedItem = item.usersLiked === undefined ? <div>Loading...</div> : <div style={{display:'inline', marginTop:"5px",marginRight:"5px",  verticalAlign: "top"}}>{item.usersLiked.length}</div>
+                // for(var i = 0; i < item.usersLiked; i++){
+                    console.log(item.usersLiked[0] !== this.props.auth._id)
+                    if(item.usersLiked[0] !== this.props.auth._id){
+                            return(
+                                <div onClick={() => this.props.addLike(item._id)} className="secondary-content">
+                                    {likedItem}
+                                    <i className="material-icons" style={{marginTop:"-2px"}}>star_border</i>
+                                </div>
+                            )
+                    } else {
+                            return(
+                                <div onClick={() => this.props.deleteLike(item._id)} className="secondary-content">
+                                    {likedItem}
+                                    <i className="material-icons" style={{marginTop:"-2px"}}>grade</i>
+                                </div>
+                            )
+                        }
+                                       
+        }
+    }
+
 
     renderItems = () => {
         if(!this.props.item || this.props.auth === null){
@@ -17,7 +45,7 @@ class MainList extends React.Component{
         } else {
             return this.props.item.map(item => {
 
-                if(this.props.auth.twitterId === item.twitterId){
+                if(this.props.auth.twitterId === item.twitterId && item.itemQty > 0){
 
                     return(
                         <li key={item._id} className="collection-item">
@@ -31,14 +59,16 @@ class MainList extends React.Component{
 
                         </li>
                     )
-                } else {
+                } else if (item.itemQty > 0) {
                     const likedItem = item.usersLiked === undefined ? <div>Loading...</div> : <div style={{display:'inline', marginTop:"5px",marginRight:"5px",  verticalAlign: "top"}}>{item.usersLiked.length}</div>
                         return(
                             <li key={item._id} className="collection-item">
-                                <div onClick={() => this.props.addLike(item._id)} className="secondary-content">
+                                {/* <div onClick={() => this.props.addLike(item._id)} className="secondary-content">
                                         {likedItem}
                                     <i className="material-icons" style={{marginTop:"-2px"}}>grade</i>
-                                </div>
+                                </div> */}
+                                {this.renderLikes(item)}
+                                {/* {likedItem} */}
                                 <b><Link to={`/item/${item._id}`}>{item.itemName}</Link></b>
                                 <p>${item.itemPrice}</p>
                                 <p>{item.itemDesc}</p>
@@ -51,6 +81,7 @@ class MainList extends React.Component{
     }
 
     render(){
+        console.log(this.props)
         return(
             <div>
                 <div style={{margin:"0 auto"}}>
@@ -73,5 +104,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps,{
     fetchItems,
-    addLike
+    addLike,
+    deleteLike
 })(MainList)

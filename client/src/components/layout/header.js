@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchUser} from '../../actions'
+import {fetchUser,fetchCart} from '../../actions'
 
 class Header extends React.Component{
     componentDidMount(){
@@ -9,21 +9,21 @@ class Header extends React.Component{
     }
     
     renderLogin = () => {
-      const {auth} = this.props
+      const {auth,cart} = this.props
 
       switch(auth){
         case null:
             return;
         case false:
             return(
-                <li><a href="http://localhost:5000/auth/twitter">Login with Twitter</a></li>
+                <li><a href="/auth/twitter">Login with Twitter</a></li>
             )
         default:
             return(
             <React.Fragment>
                 <img src={auth.profilePic} style={{height:"25px",width:"25px",marginTop:"18px",float:"left"}}/>
                 <li><Link to={`/profile/${auth.twitterId}`}>My Profile</Link></li>
-                <li><Link to={'/cart'}><i className="material-icons">shopping_cart</i> </Link></li>
+                <li><Link to={`/cart/${auth._id}`}><i className="material-icons">shopping_cart</i></Link></li>
                 <li><a href="/api/logout">Logout</a></li>
             </React.Fragment>
             )
@@ -35,7 +35,7 @@ class Header extends React.Component{
         return(
             <nav>
             <div className="nav-wrapper">
-              <Link to="/" className="brand-logo">Buy and Sell</Link>
+              <Link to="/" className="brand-logo">WishBuyer</Link>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 {this.renderLogin()}              
             </ul>
@@ -47,9 +47,11 @@ class Header extends React.Component{
 }
 const mapStateToProps = (state) => {
     return{
-        auth: state.auth
+        auth: state.auth,
+        cart: state.cart
     }
 }
 export default connect(mapStateToProps,{
-    fetchUser
+    fetchUser,
+    fetchCart
 })(Header)
