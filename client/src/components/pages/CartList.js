@@ -12,7 +12,10 @@ class CartList extends React.Component{
     componentDidMount(){
         this.props.fetchCart(this.props.match.params.id)
         this.props.fetchItems();
-        this.props.userPay();
+        if(this.props.match.params.id !== undefined){
+            this.props.userPay();
+        }
+
     }
 
     renderCartRow(){
@@ -78,24 +81,6 @@ class CartList extends React.Component{
         )
     }
 
-    // renderTotal = () => {
-    //     if (!this.props.cart.cartContents === undefined){
-    //         return(
-    //             <div>Loading</div>
-    //         )
-    //     } else { 
-    //         return this.props.cart.cartContents.map(cartItems => {
-    //             for(var i = 0; i < this.props.item.length; i++){
-    //                 if(cartItems.itemId === this.props.item[i]._id){
-    //                         const total = this.props.item[i].itemPrice * this.props.item[i].quantity
-                    
-    //                         const totalNumber = total.reduce((a,b) => a + b, 0)
-    //                         return totalNumber
-    //                 }
-    //             }
-    //         })
-    //     }
-    // }
 
     render(){
         console.log(this.props)

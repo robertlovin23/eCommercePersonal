@@ -1,9 +1,9 @@
 import React from 'react'
+import CommentForm from '../forms/commentForm'
 import _ from 'lodash'
 import {connect} from 'react-redux'
 import {fetchItem,addToCart,makeCart,fetchUsers} from '../../actions'
 
-// const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 class ItemDetail extends React.Component{
     componentDidMount(){
@@ -11,20 +11,46 @@ class ItemDetail extends React.Component{
         this.props.fetchUsers();
     }
 
+    renderComments = () => {
+        if(this.props.item.item.comments === undefined || _.isEmpty(this.props.user)){
+            return <div>Loading...</div>
+        } else {
+            var response = this.props.user.map(user => {
+                return this.props.item.item.comments.map(comment => {
+                    console.log(comment,user)
+                    if(user._id === comment.userId){
+                        return(
+                            <div className="collection-item">
+                                <img src={user.profilePic}/> 
+                                <b style={{display:"block"}}>{user.displayName}</b>       
+                                <p>{comment.commentBody}</p>
+                            </div>
+                        )
+                    }
+                })
+            })
+            return(
+                <div className="collection"> 
+                    {response}
+                </div>
+            )
+        }
+    }
+
     showWhoLiked = () =>{
-        if(this.props.item.usersLiked === undefined || _.isEmpty(this.props.user)){
+        if(this.props.item.item.usersLiked === undefined || _.isEmpty(this.props.user)){
             return <div>Loading...</div>
         } else {
 
-            var response = this.props.user.map(use => {
-                    return this.props.item.usersLiked.map(like => {
-                        console.log(use.profilePic,this.props.user)
-                        if(use._id === like){
-                            console.log(use.profilePic)
+            var response = this.props.user.map(user => {
+                    return this.props.item.item.usersLiked.map(like => {
+                        console.log(user.profilePic,this.props.user)
+                        if(user._id === like){
+                            console.log(user.profilePic)
                             return (
                                 <li style={{marginTop:"20px"}}>
-                                    <img src={use.profilePic} style={{marginBottom:"-20px", marginRight: "10px", borderRadius: "50%"}}/>        
-                                    {use.displayName}
+                                    <img src={user.profilePic} style={{marginBottom:"-20px", marginRight: "10px", borderRadius: "50%"}}/>        
+                                    {user.displayName}
                                 </li>
 
                             )
@@ -47,29 +73,48 @@ class ItemDetail extends React.Component{
     }
 
     render(){
-        if(!this.props.item){
+        if(!this.props.item.item){
             return(
                 <div>Loading...</div>
             )
-        }
+        } else {
+            
+            const { itemName, itemPrice, itemDesc, _id, usersLiked } = this.props.item.item
+            const image = this.props.item.itemImgBase64
+            console.log(this.props.item)
+            if(image){
+                return(
+                    <div>
+                        <div className="row">
+                            <div className="col m9">
+                                <img src={`data:image/jpeg;base64,${image}`} style={{marginTop:"40px"}}></img>
+                            </div>
 
-        const { itemName, itemPrice, itemDesc, _id, usersLiked } = this.props.item
-        return(
-            <div>
-                <h3>{itemName}</h3>
-                <div>
-                    <b>${itemPrice}</b>
-                    <p>{itemDesc}</p>
-                </div>
-                <div>
-                    {this.showWhoLiked()}
-                </div>
-                <br/>
-                <button className="waves-effect waves-light btn" onClick={this.fetchItem}>
-                    Add to Cart
-                </button>
-            </div>
-        )
+                            <div className="col m3">
+                                <div>
+                                    <h3>{itemName}</h3>
+                                    <h4>${itemPrice}</h4>
+                                    <p>{itemDesc}</p>
+                                </div>
+
+                                {this.showWhoLiked()}
+
+                                <br/>
+                                <button className="waves-effect waves-light btn" onClick={this.fetchItem}>
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style={{textAlign: 'center'}}>Comments</h4>
+                            {this.renderComments()}
+                            <CommentForm itemId={_id}></CommentForm>
+                        </div>
+                    </div>
+                )
+            }
+
+        }        
     }
 }
 

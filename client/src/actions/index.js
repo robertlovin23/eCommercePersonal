@@ -1,5 +1,23 @@
 import axios from 'axios'
-import { FETCH_USER, FETCH_USERS, ADD_PAYMENT, FETCH_ITEM, CREATE_ITEM, EDIT_ITEM, FETCH_ITEMS, DELETE_ITEM, ADD_CART, DELETE_FROM_CART, FETCH_CART, MAKE_CART, ADD_LIKE,DELETE_LIKE, DELETE_CART, USER_PAY } from './types'
+import { FETCH_USER, 
+        FETCH_USERS, 
+        ADD_PAYMENT, 
+        FETCH_ITEM, 
+        CREATE_ITEM, 
+        EDIT_ITEM, 
+        FETCH_ITEMS, 
+        DELETE_ITEM, 
+        ADD_CART, 
+        DELETE_FROM_CART, 
+        FETCH_CART, 
+        MAKE_CART, 
+        ADD_LIKE,
+        DELETE_LIKE, 
+        ADD_COMMENT,
+        DELETE_COMMENT,
+        DELETE_CART, 
+        USER_PAY
+     } from './types'
 import history from '../components/history'
 import { bindActionCreators } from 'redux'
 
@@ -95,6 +113,23 @@ export const deleteLike = (id) => async(dispatch) => {
     })
 }
 
+export const addComment = (id,formValues) => async (dispatch) => {
+    const response = await axios.patch(`/api/comments/${id}`, formValues)
+    dispatch({
+        type: ADD_COMMENT,
+        payload: response.data
+    })
+    console.log(response.data)
+    history.push(`/api/items/${id}`)
+}
+
+export const deleteComment = (id, formValues) => async (dispatch) => {
+    const response = await axios.patch(`/api/comments/${id}/delete`, formValues)
+    dispatch({
+        type: DELETE_COMMENT,
+        payload: response.data
+    })
+}
 
 export const deleteCart = (id) => async (dispatch) => {
     await axios.delete(`/api/cart/${id}`)
@@ -113,9 +148,9 @@ export const fetchItems = () => async (dispatch) => {
     })
 }
 
-export const createItem = (formValues) => async (dispatch,getState) => {
+export const createItem = (formValues,files) => async (dispatch,getState) => {
     const { twitterId } = getState().auth;
-    const response = await axios.post('/api/createItem', {...formValues, twitterId})
+    const response = await axios.post('/api/createItem', {...formValues, files, twitterId})
     dispatch({
         type: CREATE_ITEM,
         payload: response.data
@@ -123,8 +158,8 @@ export const createItem = (formValues) => async (dispatch,getState) => {
     history.push("/")
 }
 
-export const editItem = (id,formValues) => async (dispatch) => {
-    const response = await axios.patch(`/api/items/${id}`, formValues)
+export const editItem = (id,formValues,images) => async (dispatch) => {
+    const response = await axios.patch(`/api/items/${id}`, formValues, images)
     dispatch({
         type: EDIT_ITEM,
         payload: response.data

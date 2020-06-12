@@ -15,19 +15,21 @@ module.exports = app => {
                 return cart
             }
         })
+        console.log(payment)
         if(payment){
+
+
             const intent = await stripe.paymentIntents.create({
-                amount: payment[0].totalPrice,
+                amount: payment[0].totalPrice * 100,
                 currency: 'usd',
                 metadata: {integration_check: 'accept_a_payment'},
             })
-
+        
             res.json({client_secret: intent.client_secret});
             console.log(intent)
         } else {
-            console.log("No Cart Found")
+            alert("Payment not successful")
         }
-
     })
 
     app.post('/api/record-payment', async (req,res) => {
