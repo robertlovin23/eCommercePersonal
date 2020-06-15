@@ -1,7 +1,7 @@
 const passport = require('passport');
 const TwitterStrategy = require('passport-twitter').Strategy;
 const mongoose = require('mongoose');
-const keys = require('../config/dev');
+const keys = require('../config/keys');
 
 const User = mongoose.model('users')
 
