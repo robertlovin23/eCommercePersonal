@@ -73,7 +73,6 @@ class MainList extends React.Component{
                                         {this.renderLikes(item)}
                                         <p>${item.itemPrice}</p>
                                         <p>{item.itemDesc}</p>
-
                                     </div>
                                 </div>
                             </div>

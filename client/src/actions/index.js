@@ -19,7 +19,6 @@ import { FETCH_USER,
         USER_PAY
      } from './types'
 import history from '../components/history'
-import { bindActionCreators } from 'redux'
 
 export const fetchUser = () => async (dispatch) => {
     const response = await axios.get('/api/current_user')
@@ -55,7 +54,6 @@ export const userPay = () => async (dispatch) => {
 }
 
 export const fetchCart = (id) => async (dispatch) => {
-
     const response = await axios.get(`/api/cart/${id}`)
     dispatch({
         type: FETCH_CART,
@@ -87,6 +85,7 @@ export const addPayment = () => async (dispatch) => {
         type: ADD_PAYMENT,
         payload: response.data 
     })
+    history.push("/")
 }
 
 export const deleteFromCart = (id) => async(dispatch) => {
@@ -103,6 +102,7 @@ export const addLike = (id) => async(dispatch) => {
         type: ADD_LIKE,
         payload: response.data
     })
+    history.push("/")
 }
 
 export const deleteLike = (id) => async(dispatch) => {
@@ -111,6 +111,7 @@ export const deleteLike = (id) => async(dispatch) => {
         type: DELETE_LIKE,
         payload: response.data
     })
+    history.push("/")
 }
 
 export const addComment = (id,formValues) => async (dispatch) => {
@@ -120,15 +121,15 @@ export const addComment = (id,formValues) => async (dispatch) => {
         payload: response.data
     })
     console.log(response.data)
-    history.push(`/api/items/${id}`)
 }
 
-export const deleteComment = (id, formValues) => async (dispatch) => {
-    const response = await axios.patch(`/api/comments/${id}/delete`, formValues)
+export const deleteComment = (id,commentId) => async (dispatch) => {
+    const response = await axios.patch(`/api/comments/${id}/delete`, {commentId})
     dispatch({
         type: DELETE_COMMENT,
         payload: response.data
     })
+    console.log(response.data)
 }
 
 export const deleteCart = (id) => async (dispatch) => {
@@ -164,6 +165,7 @@ export const editItem = (id,formValues,images) => async (dispatch) => {
         type: EDIT_ITEM,
         payload: response.data
     })
+    console.log(response)
     history.push("/")
 }
 

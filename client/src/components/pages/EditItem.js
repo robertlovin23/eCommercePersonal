@@ -44,15 +44,17 @@ class EditItem extends React.Component{
     }
 
     onSubmit = (formValues) => {
-        this.props.editItem(this.props.match.params.id, formValues, this.state.images);
+        const values = this.state.images
+        console.log(values, formValues)
+        this.props.editItem(this.props.match.params.id, formValues, values);
     }
 
     render(){
-        console.log(this.props.item)
+        console.log(this.props.item.item)
         return(
             <div>
                 <h3>Edit Item</h3>
-                <ItemForm onSubmit={this.onSubmit} onFileDrop={this.onFileDrop} initialValues={_.pick(this.props.item, 'itemName','itemDesc','itemPrice','quantity','itemImg')}/>
+                <ItemForm onSubmit={this.onSubmit} onFileDrop={this.onFileDrop} initialValues={_.pick(this.props.item.item, 'itemName','itemDesc','itemPrice','quantity')}/>
             </div>
         )
     }

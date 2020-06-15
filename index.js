@@ -12,7 +12,8 @@ require('./services/passportGitHub');
 
 const app = express();
 
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({extended:true, limit:'5mb'}));
 
 app.use(
     cookieSession({

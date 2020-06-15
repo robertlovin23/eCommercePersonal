@@ -30,9 +30,8 @@ module.exports = app => {
     });
 
     app.patch('/api/comments/:id', requireLogin, async (req,res) => {
-        var itemBody = req.body.commentBody
         var id = req.params.id
-        console.log(itemBody,id)
+        console.log(req.body.commentBody, id)
             await Item.update(
                 {_id: id},
                 {
@@ -44,11 +43,12 @@ module.exports = app => {
 
     app.patch('/api/comments/:id/delete', requireLogin, async (req,res) => {
         var id = req.params.id
+        console.log(req.body.commentId, id)
             await Item.update(
                 {_id: id},
                 {
                     $inc: { numberOfComments: -1},
-                    $pull: {  comments: { commentBody: req.body.commentBody, userId: req.user._id }}
+                    $pull: {  comments: { _id: req.body.commentId }}
                 }
             )
     })

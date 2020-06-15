@@ -4,8 +4,28 @@ import {connect} from 'react-redux'
 import {fetchUser,fetchCart} from '../../actions'
 
 class Header extends React.Component{
+    constructor(){
+        super()
+        this.state={
+            open: false
+        }
+    }
     componentDidMount(){
         this.props.fetchUser();
+    }
+
+    openMenu = () => {
+        this.setState({
+            open: true
+        })
+        console.log(this.state.open)
+    }
+
+    closeMenu = () => {
+        this.setState({
+            open: !true
+        })
+        console.log(this.state.open)
     }
     
     renderLogin = () => {
@@ -33,14 +53,24 @@ class Header extends React.Component{
 
     render(){
         return(
-            <nav>
+        <React.Fragment>
+          <nav>
             <div className="nav-wrapper">
+            <a data-target="mobile-demo" class="sidenav-trigger" onClick={this.state.open === false ? () => this.openMenu() : () => this.closeMenu()}><i class="material-icons">menu</i></a>
               <Link to="/" className="brand-logo">WishBuyer</Link>
-              <ul id="nav-mobile" className="right hide-on-med-and-down">
-                {this.renderLogin()}              
-            </ul>
+                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                    {this.renderLogin()}              
+                </ul>
             </div>
           </nav>
+
+            <ul class="sidenav" id="mobile-demo" >
+                <Link to="/" className="brand-logo">WishBuyer</Link>
+                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                    {this.renderLogin()}              
+                </ul>
+            </ul>
+        </React.Fragment>
                 
         )
     }
