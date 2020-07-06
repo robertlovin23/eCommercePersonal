@@ -3,6 +3,7 @@ import M from 'materialize-css';
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
+import { Drawer, Button,List,ListItem, AppBar,Typography,Toolbar,IconButton }  from '@material-ui/core'
 import {fetchUser,fetchCart} from '../../actions'
 
 class Header extends React.Component{
@@ -16,18 +17,17 @@ class Header extends React.Component{
         this.props.fetchUser();
     }
 
-    openMenu = (anchor) => {
+    openSideMenu = (anchor) => {
         this.setState({
             open: true
         })
 
     }
 
-    closeMenu = () => {
+    closeSideMenu = () => {
         this.setState({
             open: !true
         })
-        console.log(this.state.open)
     }
     
     renderLogin = () => {
@@ -55,28 +55,50 @@ class Header extends React.Component{
 
     render(){
         return(
-        <React.Fragment>
-          <nav>
-            <div className="nav-wrapper">
-            <a href="#" data-target="mobile-demo" className="sidenav-trigger button-collapse" onClick={this.state.open === false ? () => this.openMenu() : () => this.closeMenu()}>
-                <i class="material-icons">menu</i>
-            </a>
-              <Link to="/" className="brand-logo">WishBuyer</Link>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    {this.renderLogin()}              
-                </ul>
-            </div>
-          </nav>
+            <div>
+                <AppBar position="static" style={{backgroundColor:"green"}}>
+                        <Toolbar>
+                            <IconButton color="inherit" aria-label="Menu" onClick={this.openSideMenu} style={{color:"black"}}>
+                                <MenuIcon/>
+                            </IconButton>
+                            <Typography variant="h6" color="inherit">
+                                <Link to="/">
+                                    KnapSack
+                                </Link>
+                            </Typography>
+                        </Toolbar>
+                </AppBar>
+                <Drawer
+                    variant="persistent"
+                    open={this.state.open}
+                    style={{width:"300px"}}
+                >
+                <div style={{backgroundColor:"pink", height:"100%"}}>
+                    <div>
+                    </div>
+                    <div style={{marginLeft:"70px",marginRight:"50px"}}>
+                            <Typography variant="h6">
+                                    <Link to={`/`} style={{textDecoration:"none", color:'black'}}>
+                                        Home
+                                    </Link>
+                            </Typography>
+                        {
+                            links.map((link,i) => {
 
-            <ul className="sidenav" id="mobile-demo" ref={this.openMenu}>
-                <Link to="/" className="brand-logo">WishBuyer</Link>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    {this.renderLogin()}              
-                </ul>
-            </ul>
-        </React.Fragment>
-                
-        )
+                                return(
+                                <Typography variant="h6" >
+                                    <Link style={{textDecoration:"none",color:'black'}} key={i} to={`/${link.name}`} children={<CategoryTemplate/>}>
+                                        {link.linkName}
+                                    </Link>
+                                </Typography>
+                                )
+                            })
+                        }
+                    </div>
+                    </div>
+                </Drawer>
+            </div>
+            ) 
     }
 }
 const mapStateToProps = (state) => {
