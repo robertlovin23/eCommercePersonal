@@ -22,8 +22,7 @@ module.exports = app => {
             const intent = await stripe.paymentIntents.create({
                 amount: payment[0].totalPrice * 100,
                 currency: 'usd',
-                metadata: {integration_check: 'accept_a_payment'},
-                source: req.body.id
+                metadata: {integration_check: 'accept_a_payment'}
             })
         
             res.json({client_secret: intent.client_secret});
