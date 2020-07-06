@@ -1,5 +1,5 @@
 import React from 'react'
-import M from 'materialize-css/dist/js/materialize.min.js';
+import M from 'materialize-css';
 import SideNav from '../layout/sidenav'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
