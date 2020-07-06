@@ -7,7 +7,7 @@ const Payment = mongoose.model('payments');
 
 module.exports = app => {
     app.get('/api/secret', async (req,res) => {
-        console.log(req.user._id)
+        console.log(req.user._id,req.body)
         const payment = await Cart.find({customerId: req.user._id}, (err,cart) => {
             if(err){
                 return;
@@ -23,6 +23,7 @@ module.exports = app => {
                 amount: payment[0].totalPrice * 100,
                 currency: 'usd',
                 metadata: {integration_check: 'accept_a_payment'},
+                source: req.body.id
             })
         
             res.json({client_secret: intent.client_secret});
