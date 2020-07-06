@@ -9,7 +9,7 @@ import {loadStripe} from '@stripe/stripe-js';
 import reducers from './reducers'
 import App from './components/App';
 
-const stripePromise = loadStripe('pk_test_jGTlC77uWQmsUBvLGz0FwD7n00ObGlFWRz')
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY)
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk))
 
