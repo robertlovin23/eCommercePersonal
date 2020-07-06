@@ -16,7 +16,7 @@ class CheckoutForm extends React.Component {
     event.preventDefault();
 
     const {stripe, elements, client_secret, auth} = this.props
-    console.log(client_secret)
+    console.log(client_secret,stripe)
 
     if (!stripe || !elements || !client_secret) {
       // Stripe.js has not yet loaded.

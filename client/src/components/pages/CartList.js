@@ -83,7 +83,7 @@ class CartList extends React.Component{
 
 
     render(){
-        console.log(this.props)
+        console.log(this.props.payment.client_secret)
         return(
             <div>
                 <h4>Shopping Cart</h4>
