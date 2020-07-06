@@ -12,6 +12,7 @@ class CartList extends React.Component{
     componentDidMount(){
         this.props.fetchCart(this.props.match.params.id)
         this.props.fetchItems();
+        this.props.makeCart();
         if(this.props.item !== undefined){
             this.props.userPay();
         }
