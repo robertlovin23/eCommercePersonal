@@ -24,9 +24,12 @@ class CheckoutForm extends React.Component {
       return;
     }
 
+    const cardElement = elements.getElement(CardElement);
+
     const result = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
-        card: elements.getElement(CardElement),
+        type: 'card',
+        card: cardElement,
         billing_details: {
           name: "Robert Lovin",
         },
