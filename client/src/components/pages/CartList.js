@@ -85,8 +85,6 @@ class CartList extends React.Component{
     render(){
         console.log(this.props.payment.client_secret)
 
-        const stripe = process.env.REACT_APP_STRIPE_KEY
-        
         return(
             <div>
                 <h4>Shopping Cart</h4>
@@ -115,7 +113,8 @@ class CartList extends React.Component{
                         Checkout
                     </StripeCheckout> */}
                         <ElementsConsumer>
-                            {({elements}) => (
+                            {({stripe,elements}) => 
+                                    console.log(stripe)(
                             <CheckoutForm  stripe={stripe} elements={elements} client_secret={this.props.payment.client_secret}/>
                             )}
                         </ElementsConsumer>
