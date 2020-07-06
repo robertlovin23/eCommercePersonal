@@ -1,4 +1,6 @@
 import React from 'react'
+import M from 'materialize-css/dist/js/materialize.min.js';
+import SideNav from '../layout/sidenav'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchUser,fetchCart} from '../../actions'
@@ -14,11 +16,12 @@ class Header extends React.Component{
         this.props.fetchUser();
     }
 
-    openMenu = () => {
+    openMenu = (nav) => {
         this.setState({
             open: true
         })
-        console.log(this.state.open)
+        this.nav = nav;
+        M.Sidenav.init(nav);
     }
 
     closeMenu = () => {
@@ -56,7 +59,9 @@ class Header extends React.Component{
         <React.Fragment>
           <nav>
             <div className="nav-wrapper">
-            <a data-target="mobile-demo" class="sidenav-trigger" onClick={this.state.open === false ? () => this.openMenu() : () => this.closeMenu()}><i class="material-icons">menu</i></a>
+            <a href="#" data-target="mobile-demo" className="sidenav-trigger button-collapse" onClick={this.state.open === false ? () => this.openMenu() : () => this.closeMenu()}>
+                <i class="material-icons">menu</i>
+            </a>
               <Link to="/" className="brand-logo">WishBuyer</Link>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     {this.renderLogin()}              
@@ -64,7 +69,7 @@ class Header extends React.Component{
             </div>
           </nav>
 
-            <ul class="sidenav" id="mobile-demo" >
+            <ul className="sidenav" id="mobile-demo" ref={this.openMenu}>
                 <Link to="/" className="brand-logo">WishBuyer</Link>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     {this.renderLogin()}              
