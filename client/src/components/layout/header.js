@@ -1,6 +1,6 @@
 import React from 'react'
 import M from 'materialize-css';
-import SideNav from '../layout/sidenav'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchUser,fetchCart} from '../../actions'
@@ -16,12 +16,11 @@ class Header extends React.Component{
         this.props.fetchUser();
     }
 
-    openMenu = (nav) => {
+    openMenu = (anchor) => {
         this.setState({
             open: true
         })
-        this.nav = nav;
-        M.Sidenav.init(nav);
+
     }
 
     closeMenu = () => {
