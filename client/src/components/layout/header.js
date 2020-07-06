@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
+import { MenuIcon } from '@material-ui/icons'
 import { Drawer, Button,List,ListItem, AppBar,Typography,Toolbar,IconButton }  from '@material-ui/core'
 import {fetchUser,fetchCart} from '../../actions'
 
@@ -80,19 +81,7 @@ class Header extends React.Component{
                                         Home
                                     </Link>
                             </Typography>
-                        {
-                            links.map((link,i) => {
-
-                                return(
-                                <Typography variant="h6" >
-                                    <Link style={{textDecoration:"none",color:'black'}} key={i} to={`/${link.name}`} children={<CategoryTemplate/>}>
-                                        {link.linkName}
-                                    </Link>
-                                </Typography>
-                                )
-                            })
-                        }
-                    </div>
+                        </div>
                     </div>
                 </Drawer>
             </div>
