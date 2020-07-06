@@ -113,8 +113,7 @@ class CartList extends React.Component{
                         Checkout
                     </StripeCheckout> */}
                         <ElementsConsumer>
-                            {({stripe,elements}) => 
-                                    console.log(stripe)(
+                            {({stripe,elements}) => (
                             <CheckoutForm  stripe={stripe} elements={elements} client_secret={this.props.payment.client_secret}/>
                             )}
                         </ElementsConsumer>
