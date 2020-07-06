@@ -1,6 +1,4 @@
 import React from 'react'
-import M from 'materialize-css';
-import React from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import { Drawer, Button,List,ListItem, AppBar,Typography,Toolbar,IconButton }  from '@material-ui/core'
@@ -17,7 +15,7 @@ class Header extends React.Component{
         this.props.fetchUser();
     }
 
-    openSideMenu = (anchor) => {
+    openSideMenu = () => {
         this.setState({
             open: true
         })
@@ -58,7 +56,7 @@ class Header extends React.Component{
             <div>
                 <AppBar position="static" style={{backgroundColor:"green"}}>
                         <Toolbar>
-                            <IconButton color="inherit" aria-label="Menu" onClick={this.openSideMenu} style={{color:"black"}}>
+                            <IconButton color="inherit" aria-label="Menu" onClick={this.openSideMenu} style={{color:"white"}}>
                                 <MenuIcon/>
                             </IconButton>
                             <Typography variant="h6" color="inherit">
@@ -73,7 +71,7 @@ class Header extends React.Component{
                     open={this.state.open}
                     style={{width:"300px"}}
                 >
-                <div style={{backgroundColor:"pink", height:"100%"}}>
+                <div style={{backgroundColor:"green", height:"100%"}}>
                     <div>
                     </div>
                     <div style={{marginLeft:"70px",marginRight:"50px"}}>
