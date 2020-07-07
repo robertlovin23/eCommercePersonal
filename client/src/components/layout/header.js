@@ -47,13 +47,20 @@ class Header extends React.Component{
                 <React.Fragment>
                         <ListItem>
                             <img src={auth.profilePic} style={{height:"25px",width:"25px",float:"left", marginRight: '10px'}}/>
-                            <Link style={{textDecoration: 'none'}} to={`/profile/${auth.twitterId}`}>My Profile</Link>
+                            <Link style={{textDecoration: 'none'}} to={`/profile/${auth.twitterId}`}>
+                                <ListItemText primary="My Profile"/>
+                            </Link>
                         </ListItem>
                         <ListItem>
-                            <Link style={{textDecoration: 'none'}} to={`/cart/${auth._id}`}><i className="material-icons">shopping_cart</i></Link>
+                            <Link style={{textDecoration: 'none'}} to={`/cart/${auth._id}`}>
+                                <i className="material-icons">shopping_cart</i>
+                                <ListItemText primary="Cart"/>
+                            </Link>
                         </ListItem>
                         <ListItem>
-                            <a style={{textDecoration: 'none'}} href="/api/logout">Logout</a>
+                            <a style={{textDecoration: 'none'}} href="/api/logout">
+                                <ListItemText primary="Logout"/>
+                            </a>
                         </ListItem>
                 </React.Fragment>
             )
@@ -87,8 +94,10 @@ class Header extends React.Component{
                                 <ChevronLeftIcon />
                             </IconButton>
                                 <List>
-                                    <ListItem >
-                                        <Link style={{textDecoration: 'none'}} to="/">Home</Link>
+                                    <ListItem>
+                                        <Link style={{textDecoration: 'none'}} to="/">
+                                            <ListItemText primary="Home"/>
+                                        </Link>
                                     </ListItem>
                                     {this.renderLogin()}
                                 </List>
