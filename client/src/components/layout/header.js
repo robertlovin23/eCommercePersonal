@@ -88,8 +88,8 @@ class Header extends React.Component{
                             <IconButton color="inherit" aria-label="Menu" onClick={this.openSideMenu} style={{color:"white"}}>
                                 <MenuIcon/>
                             </IconButton>
-                            <Link to="/" style={{textDecoration:"none"}}>
-                                <Typography variant="h6" color="inherit" style={{color:"white"}}>
+                            <Link to="/" style={{textDecoration:"none",color:"white"}}>
+                                <Typography variant="h6" color="inherit" >
                                     KnapSack
                                 </Typography>
                             </Link>
