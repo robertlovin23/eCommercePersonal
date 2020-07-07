@@ -48,7 +48,7 @@ class Header extends React.Component{
                         <ListItem>
                             <img src={auth.profilePic} style={{height:"25px",width:"25px",float:"left", marginRight: '10px'}}/>
                             <Link style={{textDecoration: 'none'}} to={`/profile/${auth.twitterId}`}>
-                                <ListItemText primary="My Profile"/>
+                                <ListItemText primary="Profile"/>
                             </Link>
                         </ListItem>
                         <ListItem>
@@ -86,7 +86,7 @@ class Header extends React.Component{
                 <Drawer
                     variant="temporary"
                     open={this.state.open}
-                    style={{width:"20%"}}
+                    width="20%"
 
                 >
                 <div style={{backgroundColor:"green", height:"100%"}}>
