@@ -10,11 +10,23 @@ class Header extends React.Component{
     constructor(){
         super()
         this.state={
-            open: false
+            open: false,
+            width:350
         }
     }
     componentDidMount(){
         this.props.fetchUser();
+        this.props.media({ minWidth: 768 }, () => {
+            this.setState({
+              width: 350
+            });
+          });
+        this.props.media({ maxWidth: 768 }, () => {
+            this.setState({
+              width: 150
+            });
+          });
+        }
     }
 
     openSideMenu = () => {
@@ -86,7 +98,7 @@ class Header extends React.Component{
                 <Drawer
                     variant="temporary"
                     open={this.state.open}
-                    width="20%"
+                    width={this.state.width}
 
                 >
                 <div style={{backgroundColor:"green", height:"100%"}}>
