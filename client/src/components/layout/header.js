@@ -94,7 +94,8 @@ class Header extends React.Component{
                             <IconButton onClick={this.closeSideMenu} style={{marginLeft:"-12px",marginRight:"20px"}} >
                                 <ChevronLeftIcon />
                             </IconButton>
-                                <List component="nav">
+                            <nav>
+                                <List>
                                     <ListItem>
                                         <Link style={{textDecoration: 'none'}} to="/">
                                             <ListItemText primary="Home"/>
@@ -102,6 +103,7 @@ class Header extends React.Component{
                                     </ListItem>
                                     {this.renderLogin()}
                                 </List>
+                            </nav>
                         </div>
                     </div>
                 </Drawer>
