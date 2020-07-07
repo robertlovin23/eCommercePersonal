@@ -66,7 +66,6 @@ class Header extends React.Component{
                         <ListItem>
                             <Link style={{textDecoration: 'none', display:"inline-block"}} to={`/cart/${auth._id}`}>
                                 <i className="material-icons">shopping_cart</i>
-                                <ListItemText primary="Cart"/>
                             </Link>
 
                         </ListItem>
