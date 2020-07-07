@@ -7,7 +7,6 @@ import { Drawer, Button,List,ListItem,ListItemText,AppBar,Typography,Toolbar,Ico
 import {fetchUser,fetchCart} from '../../actions'
 import Responsive from 'react-responsive-decorator'
 
-@Responsive
 class Header extends React.Component{
     constructor(){
         super()
@@ -134,4 +133,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps,{
     fetchUser,
     fetchCart
-})(Header)
+})(Responsive(Header))
