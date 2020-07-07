@@ -54,8 +54,8 @@ class Header extends React.Component{
                         <ListItem>
                             <Link style={{textDecoration: 'none'}} to={`/cart/${auth._id}`}>
                                 <i className="material-icons">shopping_cart</i>
-                                <ListItemText primary="Cart"/>
                             </Link>
+                        <ListItemText primary="Cart"/>
                         </ListItem>
                         <ListItem>
                             <a style={{textDecoration: 'none'}} href="/api/logout">
@@ -84,9 +84,10 @@ class Header extends React.Component{
                         </Toolbar>
                 </AppBar>
                 <Drawer
-                    variant="persistent"
+                    variant="temporary"
                     open={this.state.open}
                     style={{width:"300px"}}
+
                 >
                 <div style={{backgroundColor:"green", height:"100%"}}>
                     <div style={{marginLeft:"70px",marginRight:"50px"}}>
