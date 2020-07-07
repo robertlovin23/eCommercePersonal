@@ -5,7 +5,9 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { Drawer, Button,List,ListItem,ListItemText,AppBar,Typography,Toolbar,IconButton }  from '@material-ui/core'
 import {fetchUser,fetchCart} from '../../actions'
+import Responsive from 'react-responsive-decorator'
 
+@Responsive
 class Header extends React.Component{
     constructor(){
         super()
