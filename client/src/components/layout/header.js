@@ -89,8 +89,8 @@ class Header extends React.Component{
                                 <MenuIcon/>
                             </IconButton>
                             <Link to="/" >
-                                <Typography variant="h6" color="inherit" primary="KnapSack">
-
+                                <Typography variant="h6" color="inherit" >
+                                    KnapSack
                                 </Typography>
                             </Link>
                         </Toolbar>
