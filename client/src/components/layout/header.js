@@ -48,14 +48,14 @@ class Header extends React.Component{
                         <ListItem>
                             <img src={auth.profilePic} style={{height:"25px",width:"25px",float:"left", marginRight: '10px'}}/>
                             <Link style={{textDecoration: 'none'}} to={`/profile/${auth.twitterId}`}>
-                                <ListItemText primary="My Profile"/>
+                                My Profile
                             </Link>
                         </ListItem>
                         <ListItem>
                             <Link style={{textDecoration: 'none'}} to={`/cart/${auth._id}`}>
-                                <i className="material-icons">shopping_cart</i>
+                                <i className="material-icons">shopping_cart</i> Cart
                             </Link>
-                        <ListItemText primary="Cart"/>
+                        
                         </ListItem>
                         <ListItem>
                             <a style={{textDecoration: 'none'}} href="/api/logout">
@@ -98,7 +98,7 @@ class Header extends React.Component{
                                 <List>
                                     <ListItem>
                                         <Link style={{textDecoration: 'none'}} to="/">
-                                            <ListItemText primary="Home"/>
+                                            Home
                                         </Link>
                                     </ListItem>
                                     {this.renderLogin()}
