@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
-import MenuIcon  from '@material-ui/icons/Menu'
-import { Drawer, Button,List,ListItem, AppBar,Typography,Toolbar,IconButton }  from '@material-ui/core'
+import { MenuIcon,ChevronLeftIcon } from '@material-ui/icons'
+import { Drawer, Button,List,ListItem,ListItemText,AppBar,Typography,Toolbar,IconButton }  from '@material-ui/core'
 import {fetchUser,fetchCart} from '../../actions'
 
 class Header extends React.Component{
@@ -42,10 +42,18 @@ class Header extends React.Component{
         default:
             return(
             <React.Fragment>
-                <img src={auth.profilePic} style={{height:"25px",width:"25px",marginTop:"18px",float:"left"}}/>
-                <li><Link to={`/profile/${auth.twitterId}`}>My Profile</Link></li>
-                <li><Link to={`/cart/${auth._id}`}><i className="material-icons">shopping_cart</i></Link></li>
-                <li><a href="/api/logout">Logout</a></li>
+                <List component="nav">
+                    <img src={auth.profilePic} style={{height:"25px",width:"25px",marginTop:"18px",float:"left"}}/>
+                    <ListItem>
+                        <Link to={`/profile/${auth.twitterId}`}>My Profile</Link>
+                    </ListItem>
+                    <ListItem>
+                        <Link to={`/cart/${auth._id}`}><i className="material-icons">shopping_cart</i></Link>
+                    </ListItem>
+                    <ListItem>
+                        <a href="/api/logout">Logout</a>
+                    </ListItem>
+                </List>
             </React.Fragment>
             )
       }
@@ -65,6 +73,9 @@ class Header extends React.Component{
                                     KnapSack
                                 </Link>
                             </Typography>
+                            <IconButton onClick={this.closeSideMenu} style={{marginLeft:"-12",marginRight:"20"}} >
+                                <ChevronLeftIcon />
+                            </IconButton>
                         </Toolbar>
                 </AppBar>
                 <Drawer
