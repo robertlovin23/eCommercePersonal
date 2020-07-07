@@ -27,7 +27,6 @@ class Header extends React.Component{
             });
           });
         }
-    }
 
     openSideMenu = () => {
         this.setState({
@@ -64,10 +63,11 @@ class Header extends React.Component{
                             </Link>
                         </ListItem>
                         <ListItem>
-                            <Link style={{textDecoration: 'none'}} to={`/cart/${auth._id}`}>
+                            <Link style={{textDecoration: 'none', display:"inline-block"}} to={`/cart/${auth._id}`}>
                                 <i className="material-icons">shopping_cart</i>
+                                <ListItemText primary="Cart"/>
                             </Link>
-                        <ListItemText primary="Cart"/>
+
                         </ListItem>
                         <ListItem>
                             <a style={{textDecoration: 'none'}} href="/api/logout">
