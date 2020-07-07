@@ -86,15 +86,15 @@ class Header extends React.Component{
                 <Drawer
                     variant="temporary"
                     open={this.state.open}
-                    style={{width:"30%"}}
+                    style={{width:"20%"}}
 
                 >
                 <div style={{backgroundColor:"green", height:"100%"}}>
                     <div style={{marginLeft:"70px",marginRight:"50px"}}>
-                            <IconButton onClick={this.closeSideMenu} style={{marginLeft:"-12px",marginRight:"20px"}} >
+                            <IconButton onClick={this.closeSideMenu} style={{float:"right",marginRight:"-40px"}} >
                                 <ChevronLeftIcon />
                             </IconButton>
-                            <nav style={{width:"0%",lineHeight:'0px'}}>
+                            <nav style={{width:"0%",lineHeight:'0px',paddingTop:"50px"}}>
                                 <List>
                                     <ListItem>
                                         <Link style={{textDecoration: 'none'}} to="/">
