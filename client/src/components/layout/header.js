@@ -80,6 +80,10 @@ class Header extends React.Component{
                                     <Link to={`/`} style={{textDecoration:"none", color:'black'}}>
                                         Home
                                     </Link>
+                                    <img src={auth.profilePic} style={{height:"25px",width:"25px",marginTop:"18px",float:"left"}}/>
+                                    <li><Link to={`/profile/${auth.twitterId}`}>My Profile</Link></li>
+                                    <li><Link to={`/cart/${auth._id}`}><i className="material-icons">shopping_cart</i></Link></li>
+                                    <li><a href="/api/logout">Logout</a></li>
                             </Typography>
                         </div>
                     </div>
