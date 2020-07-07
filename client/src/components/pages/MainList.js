@@ -48,7 +48,11 @@ class MainList extends React.Component{
                             <div className="card">
                                 <div className="card-image">
                                     <img src={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
-                                    <span className="card-title"><Link to={`/item/${item._id}`}>{item.itemName}</Link></span>
+                                    <span className="card-title">
+                                        <Link to={`/item/${item._id}`} style={{textDecoration:"none", color:"black"}}>
+                                            {item.itemName}
+                                        </Link>
+                                    </span>
                                 </div>
                                 <div className="card-content">
                                     <p>${item.itemPrice}</p>
