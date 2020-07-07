@@ -46,7 +46,7 @@ class Header extends React.Component{
             return(
                 <React.Fragment>
                         <ListItem>
-                            <img src={auth.profilePic} style={{height:"25px",width:"25px",marginTop:"18px",float:"left"}}/>
+                            <img src={auth.profilePic} style={{height:"25px",width:"25px",float:"left", marginRight: '10px'}}/>
                             <Link to={`/profile/${auth.twitterId}`}>My Profile</Link>
                         </ListItem>
                         <ListItem>
@@ -82,20 +82,16 @@ class Header extends React.Component{
                     style={{width:"300px"}}
                 >
                 <div style={{backgroundColor:"green", height:"100%"}}>
-                    <div>
-                    </div>
                     <div style={{marginLeft:"70px",marginRight:"50px"}}>
-                            <IconButton onClick={this.closeSideMenu} style={{marginLeft:"-12",marginRight:"20"}} >
+                            <IconButton onClick={this.closeSideMenu} style={{marginLeft:"-12px",marginRight:"20px"}} >
                                 <ChevronLeftIcon />
                             </IconButton>
-                            <Typography variant="h6">
                                 <List component="nav">
                                     <ListItem>
-                                        <Link to={"/"}>Home</Link>
+                                        <Link to="/">Home</Link>
                                     </ListItem>
                                     {this.renderLogin()}
                                 </List>
-                            </Typography>
                         </div>
                     </div>
                 </Drawer>
