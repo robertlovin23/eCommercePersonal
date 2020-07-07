@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
-import { MenuIcon } from '@material-ui/icons'
+import { MenuIcon } from '@material-ui/icons/Menu'
 import { Drawer, Button,List,ListItem, AppBar,Typography,Toolbar,IconButton }  from '@material-ui/core'
 import {fetchUser,fetchCart} from '../../actions'
 
