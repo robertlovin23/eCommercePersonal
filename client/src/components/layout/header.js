@@ -51,7 +51,11 @@ class Header extends React.Component{
         case false:
             return(
                 <React.Fragment>
-                        <ListItem><a href="/auth/twitter">Login with Twitter</a></ListItem>
+                        <ListItem>
+                            <a href="/auth/twitter">
+                                <ListItemText primary="Login With Twitter"/>
+                            </a>
+                        </ListItem>
                 </React.Fragment>
             )
         default:
