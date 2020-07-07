@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
-import { MenuIcon,ChevronLeftIcon } from '@material-ui/icons'
+import MenuIcon from '@material-ui/icons/MenuIcon'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeftIcon'
 import { Drawer, Button,List,ListItem,ListItemText,AppBar,Typography,Toolbar,IconButton }  from '@material-ui/core'
 import {fetchUser,fetchCart} from '../../actions'
 
