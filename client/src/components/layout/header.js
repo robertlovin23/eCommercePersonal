@@ -74,9 +74,6 @@ class Header extends React.Component{
                                     KnapSack
                                 </Link>
                             </Typography>
-                            <IconButton onClick={this.closeSideMenu} style={{marginLeft:"-12",marginRight:"20"}} >
-                                <ChevronLeftIcon />
-                            </IconButton>
                         </Toolbar>
                 </AppBar>
                 <Drawer
@@ -88,6 +85,9 @@ class Header extends React.Component{
                     <div>
                     </div>
                     <div style={{marginLeft:"70px",marginRight:"50px"}}>
+                            <IconButton onClick={this.closeSideMenu} style={{marginLeft:"-12",marginRight:"20"}} >
+                                <ChevronLeftIcon />
+                            </IconButton>
                             <Typography variant="h6">
                                     <Link to={`/`} style={{textDecoration:"none", color:'black'}}>
                                         Home
