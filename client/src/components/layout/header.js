@@ -101,7 +101,7 @@ class Header extends React.Component{
                     width={this.state.width}
 
                 >
-                <div style={{backgroundColor:"green", height:"100%"}}>
+                <div style={{backgroundColor:"green", height:"100%"}} onClick={(e) => e.stopPropagation()}>
                     <div style={{marginLeft:"70px",marginRight:"50px"}}>
                             <IconButton onClick={this.closeSideMenu} style={{float:"right",marginRight:"-40px"}} >
                                 <ChevronLeftIcon />
