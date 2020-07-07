@@ -38,24 +38,24 @@ class Header extends React.Component{
             return;
         case false:
             return(
-                <li><a href="/auth/twitter">Login with Twitter</a></li>
+                <React.Fragment>
+                        <ListItem><a href="/auth/twitter">Login with Twitter</a></ListItem>
+                </React.Fragment>
             )
         default:
             return(
-            <React.Fragment>
-                <List component="nav">
-                    <img src={auth.profilePic} style={{height:"25px",width:"25px",marginTop:"18px",float:"left"}}/>
-                    <ListItem>
-                        <Link to={`/profile/${auth.twitterId}`}>My Profile</Link>
-                    </ListItem>
-                    <ListItem>
-                        <Link to={`/cart/${auth._id}`}><i className="material-icons">shopping_cart</i></Link>
-                    </ListItem>
-                    <ListItem>
-                        <a href="/api/logout">Logout</a>
-                    </ListItem>
-                </List>
-            </React.Fragment>
+                <React.Fragment>
+                        <ListItem>
+                            <img src={auth.profilePic} style={{height:"25px",width:"25px",marginTop:"18px",float:"left"}}/>
+                            <Link to={`/profile/${auth.twitterId}`}>My Profile</Link>
+                        </ListItem>
+                        <ListItem>
+                            <Link to={`/cart/${auth._id}`}><i className="material-icons">shopping_cart</i></Link>
+                        </ListItem>
+                        <ListItem>
+                            <a href="/api/logout">Logout</a>
+                        </ListItem>
+                </React.Fragment>
             )
       }
 
@@ -89,10 +89,12 @@ class Header extends React.Component{
                                 <ChevronLeftIcon />
                             </IconButton>
                             <Typography variant="h6">
-                                    <Link to={`/`} style={{textDecoration:"none", color:'black'}}>
-                                        Home
-                                    </Link>
-                                {this.renderLogin()}
+                                <List component="nav">
+                                    <ListItem>
+                                        <Link to={"/"}>Home</Link>
+                                    </ListItem>
+                                    {this.renderLogin()}
+                                </List>
                             </Typography>
                         </div>
                     </div>
