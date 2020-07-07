@@ -45,14 +45,14 @@ class Header extends React.Component{
         default:
             return(
                 <React.Fragment>
-                        <ListItem>
+                        <ListItem style={{textDecoration: 'none'}}>
                             <img src={auth.profilePic} style={{height:"25px",width:"25px",float:"left", marginRight: '10px'}}/>
                             <Link to={`/profile/${auth.twitterId}`}>My Profile</Link>
                         </ListItem>
-                        <ListItem>
+                        <ListItem style={{textDecoration: 'none'}}>
                             <Link to={`/cart/${auth._id}`}><i className="material-icons">shopping_cart</i></Link>
                         </ListItem>
-                        <ListItem>
+                        <ListItem style={{textDecoration: 'none'}}>
                             <a href="/api/logout">Logout</a>
                         </ListItem>
                 </React.Fragment>
@@ -87,7 +87,7 @@ class Header extends React.Component{
                                 <ChevronLeftIcon />
                             </IconButton>
                                 <List>
-                                    <ListItem>
+                                    <ListItem style={{textDecoration: 'none'}}>
                                         <Link to="/">Home</Link>
                                     </ListItem>
                                     {this.renderLogin()}
