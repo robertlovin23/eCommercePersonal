@@ -94,7 +94,7 @@ class Header extends React.Component{
                             <IconButton onClick={this.closeSideMenu} style={{marginLeft:"-12px",marginRight:"20px"}} >
                                 <ChevronLeftIcon />
                             </IconButton>
-                            <nav>
+                            <nav style={width:"0%"}>
                                 <List>
                                     <ListItem>
                                         <Link style={{textDecoration: 'none'}} to="/">
