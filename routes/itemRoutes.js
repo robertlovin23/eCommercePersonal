@@ -46,20 +46,20 @@ module.exports = app => {
         var id = req.params.id
         console.log( id)
             await Item.update(
-                {_id: id},
+                {_id: id, comments: {_id: req.body.commentId}},
                 {
-                    $inc: { comments: { commentLikesAdded: 1}}
+                    $inc: { comments: { commentLikesAdded: 1} }
                 }
             )
     })
 
     app.patch('/api/comments/:id/like/delete', requireLogin, async (req,res) => {
         var id = req.params.id
-        console.log( id)
+        console.log(req.body.commentId, id)
             await Item.update(
-                {_id: id},
+                {_id: id, comments: {_id: req.body.commentId}},
                 {
-                    $inc: { comments: { commentLikesAdded: -1}}
+                    $inc: { comments: { commentLikesAdded: -1} }
                 }
             )
     })

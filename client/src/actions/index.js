@@ -125,8 +125,8 @@ export const addComment = (id,formValues) => async (dispatch) => {
     console.log(response.data)
 }
 
-export const addCommentLike = (id) => async (dispatch) => {
-    const response = await axios.patch(`/api/comments/like/${id}`)
+export const addCommentLike = (id,commentId) => async (dispatch) => {
+    const response = await axios.patch(`/api/comments/like/${id}`,{commentId})
     dispatch({
         type: ADD_COMMENT_LIKE,
         payload: response.data
@@ -134,8 +134,8 @@ export const addCommentLike = (id) => async (dispatch) => {
     console.log(response.data)
 }
 
-export const deleteCommentLike = (id) => async (dispatch) => {
-    const response = await axios.patch(`/api/comments/${id}/like/delete`)
+export const deleteCommentLike = (id,commentId) => async (dispatch) => {
+    const response = await axios.patch(`/api/comments/${id}/like/delete`, {commentId})
     dispatch({
         type: DELETE_COMMENT_LIKE,
         payload: response.data
