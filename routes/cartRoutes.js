@@ -51,9 +51,12 @@ module.exports = app => {
                     $inc: { itemQty: -1}
                 })
                 await Cart.update({'cartContents.itemIds': id},{
-                    $inc: { 'cartContents.$.itemCount': 1, 'cartContents.$.itemPrice': item[0].itemPrice, totalCount: 1, totalPrice: item[0].itemPrice },
-                    $push: { cartContents: { itemName: item[0].itemName } }
+                    $inc: { 'cartContents.$.itemCount': 1, 'cartContents.$.itemPrice': item[0].itemPrice, totalCount: 1, totalPrice: item[0].itemPrice }                
                 })            
+                await Cart.update({customerId: req.user._id},{
+                    $push: { cartContents: {itemName: item[0].itemName} },
+                    multi: true
+                })
             }
     })
 

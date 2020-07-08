@@ -45,9 +45,9 @@ class ItemDetail extends React.Component{
                                 <div>
                                     {this.deleteComments(comment.userId,comment._id, id)}
                                     <div>
-                                        <KeyboardArrowUpIcon onClick={() => this.props.addCommentLike(comment._id, id)}></KeyboardArrowUpIcon>
+                                        {/* <KeyboardArrowUpIcon onClick={() => this.props.addCommentLike(comment._id, id)}></KeyboardArrowUpIcon>
                                         {comment.commentLikesAdded}
-                                        <KeyboardArrowDownIcon onClick={() => this.props.deleteCommentLike(comment._id, id)}></KeyboardArrowDownIcon>
+                                        <KeyboardArrowDownIcon onClick={() => this.props.deleteCommentLike(comment._id, id)}></KeyboardArrowDownIcon> */}
                                     </div>
                                     <img src={user.profilePic}/> 
                                     <b style={{display:"block"}}>{user.displayName}</b>       
