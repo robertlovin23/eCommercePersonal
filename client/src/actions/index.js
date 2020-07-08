@@ -135,7 +135,7 @@ export const addCommentLike = (id) => async (dispatch) => {
 }
 
 export const deleteCommentLike = (id) => async (dispatch) => {
-    const response = await axios.patch(`/api/comments/unlike/${id}`)
+    const response = await axios.patch(`/api/comments/${id}/like/delete`)
     dispatch({
         type: DELETE_COMMENT_LIKE,
         payload: response.data
