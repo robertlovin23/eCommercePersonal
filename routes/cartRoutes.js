@@ -43,7 +43,7 @@ module.exports = app => {
 
         const itemPricing = item[0].itemPrice
             await Cart.update({customerId: req.user._id, 'cartContents.itemIds': {$ne: id}},{
-                    $addToSet: { cartContents: { itemIds: id }}
+                    $addToSet: { cartContents: { itemIds: id, itemName: item[0].itemName }}
                 }
             )
             if(item[0].itemQty > 0){
@@ -53,10 +53,6 @@ module.exports = app => {
                 await Cart.update({'cartContents.itemIds': id},{
                     $inc: { 'cartContents.$.itemCount': 1, 'cartContents.$.itemPrice': item[0].itemPrice, totalCount: 1, totalPrice: item[0].itemPrice }                
                 })            
-                await Cart.update({customerId: req.user._id},{
-                    $push: { cartContents: {itemName: item[0].itemName} },
-                    multi: true
-                })
             }
     })
 
