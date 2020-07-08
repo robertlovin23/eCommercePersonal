@@ -11,9 +11,9 @@ class CartList extends React.Component{
 
     componentDidMount(){
         this.props.fetchCart(this.props.match.params.id)
-        this.props.fetchItems();
+        // this.props.fetchItems();
         this.props.makeCart();
-        if(this.props.item !== undefined){
+        if(this.props.cart !== undefined){
             this.props.userPay();
         }
 
@@ -28,22 +28,18 @@ class CartList extends React.Component{
             )
         } else if(this.props.cart.customerId === this.props.auth._id ){
             return this.props.cart.cartContents.map(cartItems => {
-                for(var i = 0; i < this.props.item.length; i++){      
-                    console.log(cartItems.itemCount)
-                        if(cartItems.itemIds === this.props.item[i]._id && cartItems.itemCount > 0){
+                        if(cartItems.itemIds && cartItems.itemCount > 0){
                             return(
-                                <tr key={this.props.item[i]._id}>
-                                    <td>{this.props.item[i].itemName}</td>
-                                    <td>{this.props.item[i].itemPrice}</td>
+                                <tr key={cartItems.itemIds}>
+                                    <td>{cartItems.itemName}</td>
+                                    <td>{cartItems.itemPrice}</td>
                                     <td>{cartItems.itemCount}</td>
-                                    <td><button className="waves-effect waves-light btn" onClick={() => this.props.addToCart(this.props.item[i]._id)}>Add More</button></td>
-                                    <td><button className="waves-effect waves-light btn" onClick={() => this.props.deleteFromCart(this.props.item[i]._id)}>Delete</button></td> 
+                                    <td><button className="waves-effect waves-light btn" onClick={() => this.props.addToCart(cartItems.itemIds)}>Add More</button></td>
+                                    <td><button className="waves-effect waves-light btn" onClick={() => this.props.deleteFromCart(cartItems.itemIds)}>Delete</button></td> 
                                 </tr>
                             )
 
                     }              
-
-                }
             })
         }
     }
@@ -106,7 +102,7 @@ class CartList extends React.Component{
                 </table>
                 <br/>
                 <div style={{marginBottom: '10px'}}>
-                    <b style={{display:'inline'}}>Total: $ {this.renderTotal()}</b>
+                    <b style={{display:'inline'}}>Total: $ {this.props.cart.totalPrice}</b>
                 </div>
                 {this.props.cart.totalCount} Items
                 <br/>
@@ -132,14 +128,12 @@ class CartList extends React.Component{
 const mapStateToProps = (state,ownProps) => {
     return{
         cart: state.cart,
-        item: state.item,
         auth: state.auth,
         payment: state.payment
     }
 }
 
 export default connect(mapStateToProps,{
-    fetchItems,
     fetchCart,
     fetchUser,
     deleteFromCart,
