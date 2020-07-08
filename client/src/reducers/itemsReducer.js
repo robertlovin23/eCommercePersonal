@@ -17,6 +17,10 @@ export default (state = {},action) => {
             return {...state, [action.payload.id]: action.payload}
         case DELETE_COMMENT:
             return {...state, [action.payload.id]: action.payload}
+        case ADD_COMMENT_LIKE:
+            return {...state, [action.payload.id]: action.payload}
+        case DELETE_COMMENT_LIKE:
+            return {...state, [action.payload.id]: action.payload}
         case EDIT_ITEM:
             return {...state, [action.payload.id]: action.payload}
         case DELETE_ITEM:

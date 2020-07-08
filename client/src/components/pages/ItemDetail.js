@@ -2,7 +2,9 @@ import React from 'react'
 import CommentForm from '../forms/commentForm'
 import _ from 'lodash'
 import {connect} from 'react-redux'
-import {fetchItem,addToCart,makeCart,fetchUsers,deleteComment} from '../../actions'
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import {fetchItem,addToCart,makeCart,fetchUsers,deleteComment,addCommentLike,deleteCommentLike} from '../../actions'
 
 
 class ItemDetail extends React.Component{
@@ -42,6 +44,11 @@ class ItemDetail extends React.Component{
                             <div className="collection-item" key={comment._id}>
                                 <div>
                                     {this.deleteComments(comment.userId,comment._id, id)}
+                                    <div>
+                                        <KeyboardArrowUpIcon onClick={() => this.props.addCommentLike(comment._id, id)}></KeyboardArrowUpIcon>
+                                        {comment.commentLikesAdded}
+                                        <KeyboardArrowDownIcon onClick={() => this.props.deleteCommentLike(comment._id, id)}></KeyboardArrowDownIcon>
+                                    </div>
                                     <img src={user.profilePic}/> 
                                     <b style={{display:"block"}}>{user.displayName}</b>       
                                     <p>{comment.commentBody}</p>
@@ -161,5 +168,7 @@ export default connect(mapStateToProps,{
     addToCart,
     makeCart,
     fetchUsers,
-    deleteComment
+    deleteComment,
+    addCommentLike,
+    deleteCommentLike
 })(ItemDetail)

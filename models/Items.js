@@ -15,7 +15,8 @@ const itemSchema = new Schema({
     comments: [{
         userId: {type: Schema.Types.ObjectId, ref: 'users'},
         commentBody: String,
-        timePosted: {type:Date, default: Date.now}
+        timePosted: {type:Date, default: Date.now},
+        commentLikesAdded: {type: Number, default: 0},
     }],
     numberOfComments: {type: Number, default: 0},
 })

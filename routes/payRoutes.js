@@ -41,6 +41,7 @@ module.exports = app => {
                 return cart
             }
         })
+        
         const itemArr = payment[0].cartContents.map(item => {
             return item.itemIds
         })

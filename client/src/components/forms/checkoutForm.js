@@ -1,7 +1,7 @@
 import React from 'react';
 import {ElementsConsumer, CardElement} from '@stripe/react-stripe-js';
 import {connect} from 'react-redux'
-import {deleteCart, fetchCart, addPayment} from '../../actions'
+import {deleteCart, fetchCart, addPayment,deleteItem} from '../../actions'
 import CardSection from '../layout/card'
 
 class CheckoutForm extends React.Component {
@@ -75,5 +75,6 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps,{
     deleteCart,
     fetchCart,
-    addPayment
+    addPayment,
+    deleteItem
 })(CheckoutForm)

@@ -15,6 +15,8 @@ import { FETCH_USER,
         DELETE_LIKE, 
         ADD_COMMENT,
         DELETE_COMMENT,
+        ADD_COMMENT_LIKE,
+        DELETE_COMMENT_LIKE,
         DELETE_CART, 
         USER_PAY
      } from './types'
@@ -118,6 +120,24 @@ export const addComment = (id,formValues) => async (dispatch) => {
     const response = await axios.patch(`/api/comments/${id}`, formValues)
     dispatch({
         type: ADD_COMMENT,
+        payload: response.data
+    })
+    console.log(response.data)
+}
+
+export const addCommentLike = (id) => async (dispatch) => {
+    const response = await axios.patch(`/api/comments/like/${id}`)
+    dispatch({
+        type: ADD_COMMENT_LIKE,
+        payload: response.data
+    })
+    console.log(response.data)
+}
+
+export const deleteCommentLike = (id) => async (dispatch) => {
+    const response = await axios.patch(`/api/comments/unlike/${id}`)
+    dispatch({
+        type: DELETE_COMMENT_LIKE,
         payload: response.data
     })
     console.log(response.data)
