@@ -44,31 +44,31 @@ class CartList extends React.Component{
         }
     }
 
-    findTotal = () => {
-        if(this.props.cart.cartContents === undefined){
-            return(
-                <div style={{display:'inline'}}>0</div>
-            )
-        } else {
-            var prices = 0;
-            var totalArr = [];
-            this.props.cart.cartContents.map(cartItems => {
-                for(var i = 0; i < this.props.item.length; i++){    
-                    if(this.props.item[i]._id === cartItems.itemIds){
-                        prices = this.props.item[i].itemPrice * cartItems.itemCount
-                        console.log(prices)
-                    }
-                }
-                totalArr.push(prices)
-                return totalArr
+    // findTotal = () => {
+    //     if(this.props.cart.cartContents === undefined){
+    //         return(
+    //             <div style={{display:'inline'}}>0</div>
+    //         )
+    //     } else {
+    //         var prices = 0;
+    //         var totalArr = [];
+    //         this.props.cart.cartContents.map(cartItems => {
+    //             for(var i = 0; i < this.props.item.length; i++){    
+    //                 if(this.props.item[i]._id === cartItems.itemIds){
+    //                     prices = this.props.item[i].itemPrice * cartItems.itemCount
+    //                     console.log(prices)
+    //                 }
+    //             }
+    //             totalArr.push(prices)
+    //             return totalArr
 
    
-            })
-            const totalPrice = totalArr.reduce((a,b) => a + b, 0)
-            console.log(totalPrice)
-            return totalPrice
-        }
-    }
+    //         })
+    //         const totalPrice = totalArr.reduce((a,b) => a + b, 0)
+    //         console.log(totalPrice)
+    //         return totalPrice
+    //     }
+    // }
 
 
     renderTotal(){
