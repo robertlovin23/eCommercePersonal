@@ -43,7 +43,7 @@ module.exports = app => {
 
         const itemPricing = item[0].itemPrice
             await Cart.update({customerId: req.user._id, 'cartContents.itemIds': {$ne: id}},{
-                    $addToSet: { cartContents: { itemIds: id, itemName: item[0].itemName }}
+                    $addToSet: { cartContents: { itemIds: id, itemName: item[0].itemName, itemPrice: item[0].itemPrice }}
                 }
             )
             if(item[0].itemQty > 0){
@@ -51,7 +51,7 @@ module.exports = app => {
                     $inc: { itemQty: -1}
                 })
                 await Cart.update({'cartContents.itemIds': id},{
-                    $inc: { 'cartContents.$.itemCount': 1, 'cartContents.$.itemPrice': item[0].itemPrice, totalCount: 1, totalPrice: item[0].itemPrice }                
+                    $inc: { 'cartContents.$.itemCount': 1, totalCount: 1, totalPrice: item[0].itemPrice }                
                 })            
             }
     })
@@ -78,13 +78,13 @@ module.exports = app => {
         })
         console.log(cartCount[0], item[0].itemQty)
             await Cart.update({'cartContents.itemIds': id},{
-                $inc: { 'cartContents.$.itemCount': -1, 'cartContents.$.itemPrice': -item[0].itemPrice,  totalCount: -1, totalPrice: -item[0].itemPrice}
+                $inc: { 'cartContents.$.itemCount': -1,  totalCount: -1, totalPrice: -item[0].itemPrice}
             })
             await Item.update({_id: req.params.id},{
                 $inc: { itemQty: 1}
             })
             await Cart.update({customerId: req.user._id},{
-                $pull: { cartContents: { itemCount: 0, itemIds: id, itemName: item[0].itemName} },
+                $pull: { cartContents: { itemCount: 0, itemIds: id, itemName: item[0].itemName, itemPrice: -item[0].itemPrice,} },
                 multi: true
             })
         
