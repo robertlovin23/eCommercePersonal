@@ -10,9 +10,13 @@ import {userPay, fetchCart, fetchItems,fetchUser,deleteFromCart,addToCart, makeC
 class CartList extends React.Component{
 
     componentDidMount(){
-        this.props.fetchCart(this.props.match.params.id)
         // this.props.fetchItems();
         this.props.makeCart();
+
+        if(this.props.match.params.id){
+            this.props.fetchCart(this.props.match.params.id)
+        }
+         
         if(this.props.cart !== undefined){
             this.props.userPay();
         }
