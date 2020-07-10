@@ -53,7 +53,7 @@ class Header extends React.Component{
                 <React.Fragment>
                         <ListItem>
                             <a href="/auth/twitter">
-                                <ListItemText primary="Login With Twitter"/>
+                                <ListItemText primary="Login"/>
                             </a>
                         </ListItem>
                 </React.Fragment>
