@@ -2,7 +2,7 @@ import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import {Elements,CardElement,ElementsConsumer} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
-import {Button,TableCell,TableRow,TableHead,Table,TableContainer, Typography} from '@material-ui/core'
+import {Button,TableCell,TableRow,TableHead,Table,TableContainer, TableBody, Typography} from '@material-ui/core'
 import {connect} from 'react-redux'
 import CheckoutForm from '../forms/checkoutForm'
 import {userPay, fetchCart, fetchItems,fetchUser,deleteFromCart,addToCart, makeCart, addPayment} from '../../actions'
