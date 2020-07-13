@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import FavoriteIcon from '@material-ui/icons/Favorite'
-import { Container, Grid, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, IconButton } from '@material-ui/core'
+import { Container, Grid, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, IconButton, Typography } from '@material-ui/core'
 import {fetchItems,fetchUser,addLike,deleteLike} from '../../actions'
 
 class MainList extends React.Component{
@@ -56,18 +56,25 @@ class MainList extends React.Component{
                                     <CardMedia image={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
                                         <CardContent>
                                             <Link to={`/item/${item._id}`} style={{textDecoration:"none", color:"black"}}>
-                                                {item.itemName}
+                                                <Typography variant={h4}>
+                                                    {item.itemName}
+                                                </Typography> 
                                             </Link>
-                                            <p>${item.itemPrice}</p>
-                                            <p>{item.itemDesc}</p>
+                                            <Typography variant={subtitle1}>
+                                                ${item.itemPrice}
+                                            </Typography>
+                                            <Typography variant={body1}>
+                                                {item.itemDesc}
+                                            </Typography>
+
                                         </CardContent>
                                 </CardActionArea>
                                 <CardActions>
-                                    <Button variant="outlined" color="primary">
-                                        <Link  to={`/item/edit/${item._id}`} style={{marginRight:"10px"}}>Edit</Link>
+                                    <Button variant="outlined" color="primary" component={Link} to={`/item/edit/${item._id}`}>
+                                        Edit
                                     </Button>
-                                    <Button variant="outlined" color="secondary">
-                                        <Link Button to={`/item/delete/${item._id}`}data-trigger="deleteModal">Delete</Link>
+                                    <Button variant="outlined" color="secondary" component={Link} to={`/item/delete/${item._id}`} >
+                                        Delete
                                     </Button>
                                 </CardActions>
                             </Card>
@@ -81,11 +88,17 @@ class MainList extends React.Component{
                                         <CardMedia image={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
                                         <CardContent>
                                             <Link to={`/item/${item._id}`} style={{textDecoration:"none", color:"black"}}>
-                                                {item.itemName}
+                                                <Typography variant={h4}>
+                                                    {item.itemName}
+                                                </Typography> 
                                             </Link>
                                             {this.renderLikes(item)}
-                                            <p>${item.itemPrice}</p>
-                                            <p>{item.itemDesc}</p>
+                                            <Typography variant={subtitle1}>
+                                                ${item.itemPrice}
+                                            </Typography>
+                                            <Typography variant={body1}>
+                                                {item.itemDesc}
+                                            </Typography>
                                         </CardContent>
                                     </CardActionArea>
                                 </Card>
@@ -102,7 +115,7 @@ class MainList extends React.Component{
         return(
             <div>
                 <div style={{margin:"0 auto"}}>
-                    <h3>All Items</h3>
+                    <Typography varaint={h3}>All Items</Typography>
                 </div>
                 <Grid container spacing={3}>
                     {this.renderItems()}

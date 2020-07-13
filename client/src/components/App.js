@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container } from '@material-ui/core'
+import 'fontsource-roboto';
 import {fetchUser,fetchItems} from '../actions';
 import {connect} from 'react-redux';
 import MainList from './pages/MainList';
