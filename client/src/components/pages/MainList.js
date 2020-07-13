@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import { Container, Grid, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, IconButton } from '@material-ui/core'
 import {fetchItems,fetchUser,addLike,deleteLike} from '../../actions'
 
 class MainList extends React.Component{
@@ -16,14 +18,18 @@ class MainList extends React.Component{
                     return(
                         <div onClick={() => this.props.addLike(item._id)} className="secondary-content">
                             {likedItem}
-                            <i className="material-icons" style={{marginTop:"-2px"}}>star_border</i>
+                            <IconButton aria-label="add to favorites">
+                                <FavoriteIcon style={{marginTop:"-2px"}}/>
+                            </IconButton>
                         </div>
                     )
             } else {
                     return(
                         <div onClick={() => this.props.deleteLike(item._id)} className="secondary-content">
                             {likedItem}
-                            <i className="material-icons" style={{marginTop:"-2px"}}>grade</i>
+                            <IconButton aria-label="delete from favorites">
+                                <FavoriteIcon style={{marginTop:"-2px"}}/>
+                            </IconButton>
                         </div>
                     )
                 }
@@ -44,42 +50,41 @@ class MainList extends React.Component{
 
                 if(this.props.auth.twitterId === item.twitterId && item.itemQty > 0 && base64){
                     return(
-                        <div key={item._id} className="col m4 s12">
-                            <div className="card">
-                                <div className="card-image">
-                                    <img src={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
-                                    <span className="card-title">
-                                        <Link to={`/item/${item._id}`} style={{textDecoration:"none", color:"black"}}>
-                                            {item.itemName}
-                                        </Link>
-                                    </span>
-                                </div>
-                                <div className="card-content">
-                                    <p>${item.itemPrice}</p>
-                                    <p>{item.itemDesc}</p>
-                                </div>
-                                <div className="card-action">
+                        <Grid key={item._id} item xs={4}>
+                            <Card>
+                                <CardActionArea>
+                                    <CardMedia src={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
+                                        <CardContent>
+                                            <Link to={`/item/${item._id}`} style={{textDecoration:"none", color:"black"}}>
+                                                {item.itemName}
+                                            </Link>
+                                            <p>${item.itemPrice}</p>
+                                            <p>{item.itemDesc}</p>
+                                        </CardContent>
+                                </CardActionArea>
+                                <CardActions>
                                     <Link to={`/item/edit/${item._id}`} className="waves-effect waves-light btn" style={{marginRight:"10px"}}>Edit</Link>
                                     <Link to={`/item/delete/${item._id}`} className="waves-effect waves-light btn modal-trigger" data-trigger="deleteModal">Delete</Link>
-                                </div>
-                            </div>
-                        </div>
+                                </CardActions>
+                            </Card>
+                        </Grid>
                     )
                 } else if (item.itemQty > 0) {
                         return(
-                            <div key={item._id} className="col m4 s12">
-                                <div className="card">
-                                    <div className="card-image">
-                                        <img src={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
+                            <Grid key={item._id} item xs={4}>
+                                <Card>
+                                    <CardActionArea>
+                                        <CardMedia src={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
                                         <span className="card-title"><Link to={`/item/${item._id}`}>{item.itemName}</Link></span>
-                                    </div>
-                                    <div className="card-content">
+
+                                    <CardContent>
                                         {this.renderLikes(item)}
                                         <p>${item.itemPrice}</p>
                                         <p>{item.itemDesc}</p>
-                                    </div>
-                                </div>
-                            </div>
+                                    </CardContent>
+                                    </CardActionArea>
+                                </Card>
+                            </Grid>
                         ) 
                     }
                 }
@@ -94,9 +99,9 @@ class MainList extends React.Component{
                 <div style={{margin:"0 auto"}}>
                     <h3>All Items</h3>
                 </div>
-                <div className="row">
+                <Grid container spacing={3}>
                     {this.renderItems()}
-                </div>
+                </Grid>
             </div>
         )
     }
