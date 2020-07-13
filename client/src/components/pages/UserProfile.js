@@ -1,6 +1,6 @@
 import React from 'react'
-import {Link, Typography} from 'react-router-dom'
-import {Button} from '@material-ui/icon'
+import {Link} from 'react-router-dom'
+import {Button, Typography} from '@material-ui/core'
 import {connect} from 'react-redux'
 import {fetchUser} from '../../actions'
 
