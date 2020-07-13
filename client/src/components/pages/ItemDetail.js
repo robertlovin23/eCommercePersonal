@@ -25,11 +25,11 @@ class ItemDetail extends React.Component{
                 )
             } else if(this.props.auth._id === id){
                     return(
-                        <div>
+                        <ListItemSecondaryAction>
                             <IconButton onClick={() => this.props.deleteComment(itemId,commentId)}>
                                 <CloseIcon>close</CloseIcon>
                             </IconButton>
-                        </div>
+                        </ListItemSecondaryAction>
                     )
             }
     }
@@ -54,7 +54,7 @@ class ItemDetail extends React.Component{
                                     <ListItemAvatar>
                                         <Avatar src={user.profilePic} alt={user.displayName}/> 
                                     </ListItemAvatar>
-                                    <b style={{display:"block"}}>{user.displayName}</b>       
+                                    <Typography variant="subtitle1" style={{display:"block"}}>{user.displayName}</Typography>       
                                     <Typography variant="body1">{comment.commentBody}</Typography>
 
                                 </div>
@@ -134,11 +134,13 @@ class ItemDetail extends React.Component{
 
                             <Grid item xs={3}>
                                 <div>
-                                    <Typography variant="h3">{itemName}</Typography>
-                                    <Typography variant="h4">${itemPrice}</Typography>
+                                    <div style={{marginBottom:"15px"}}>
+                                        <Typography variant="h3">{itemName}</Typography>
+                                        <Typography variant="h4">${itemPrice}</Typography>
+                                    </div>
                                     <Typography variant="body1">{itemDesc}</Typography>
                                 </div>
-
+                                
                                 {this.showWhoLiked()}
 
                                 <br/>
