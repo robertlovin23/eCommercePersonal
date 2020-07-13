@@ -1,5 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Typography} from 'react-router-dom'
+import {Button} from '@material-ui/icon'
 import {connect} from 'react-redux'
 import {fetchUser} from '../../actions'
 
@@ -18,13 +19,15 @@ class UserProfile extends React.Component{
         }
         return(
             <div>
-                <h3 style={{textAlign: "center"}}>My Profile</h3>
+                <Typography variant="h3" style={{textAlign: "center"}}>My Profile</Typography>
                 <div>
                     <img src={this.props.auth.profilePic} style={{width:"100px", height: "100px",borderRadius:"10%"}}/>
                     <div>
-                        <h5>{this.props.auth.displayName}</h5>
+                        <Typography variant="h5">{this.props.auth.displayName}</Typography>
                     </div>
-                    <Link to={"/items/new"} style={{marginTop:"10px"}} className="waves-effect waves-light btn">List New Item</Link>
+                    <div>
+                        <Button variant="contained" color="primary" component={Link} to={"/items/new"}>List New Item</Button>
+                    </div>
                 </div>
             </div>
         )
