@@ -16,7 +16,7 @@ class MainList extends React.Component{
             console.log(item.usersLiked[0] !== this.props.auth._id)
             if(item.usersLiked[0] !== this.props.auth._id){
                     return(
-                        <CardActions onClick={() => this.props.addLike(item._id)} className="secondary-content">
+                        <CardActions onClick={() => this.props.addLike(item._id)}>
                             {likedItem}
                             <IconButton aria-label="add to favorites">
                                 <FavoriteIcon style={{marginTop:"-2px"}}/>
@@ -25,7 +25,7 @@ class MainList extends React.Component{
                     )
             } else {
                     return(
-                        <CardActions onClick={() => this.props.deleteLike(item._id)} className="secondary-content">
+                        <CardActions onClick={() => this.props.deleteLike(item._id)}>
                             {likedItem}
                             <IconButton aria-label="delete from favorites">
                                 <FavoriteIcon style={{marginTop:"-2px"}}/>
@@ -63,8 +63,12 @@ class MainList extends React.Component{
                                         </CardContent>
                                 </CardActionArea>
                                 <CardActions>
-                                    <Link to={`/item/edit/${item._id}`} className="waves-effect waves-light btn" style={{marginRight:"10px"}}>Edit</Link>
-                                    <Link to={`/item/delete/${item._id}`} className="waves-effect waves-light btn modal-trigger" data-trigger="deleteModal">Delete</Link>
+                                    <Button variant="outlined" color="primary">
+                                        <Link  to={`/item/edit/${item._id}`} style={{marginRight:"10px"}}>Edit</Link>
+                                    </Button>
+                                    <Button variant="outlined" color="secondary">
+                                        <Link Button to={`/item/delete/${item._id}`}data-trigger="deleteModal">Delete</Link>
+                                    </Button>
                                 </CardActions>
                             </Card>
                         </Grid>
@@ -75,14 +79,14 @@ class MainList extends React.Component{
                                 <Card>
                                     <CardActionArea>
                                         <CardMedia image={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
-                                    <CardContent>
-                                        <Link to={`/item/${item._id}`} style={{textDecoration:"none", color:"black"}}>
-                                            {item.itemName}
-                                        </Link>
-                                        {this.renderLikes(item)}
-                                        <p>${item.itemPrice}</p>
-                                        <p>{item.itemDesc}</p>
-                                    </CardContent>
+                                        <CardContent>
+                                            <Link to={`/item/${item._id}`} style={{textDecoration:"none", color:"black"}}>
+                                                {item.itemName}
+                                            </Link>
+                                            {this.renderLikes(item)}
+                                            <p>${item.itemPrice}</p>
+                                            <p>{item.itemDesc}</p>
+                                        </CardContent>
                                     </CardActionArea>
                                 </Card>
                             </Grid>
