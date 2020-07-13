@@ -74,10 +74,11 @@ class MainList extends React.Component{
                             <Grid key={item._id} item xs={4}>
                                 <Card>
                                     <CardActionArea>
-                                        <CardMedia src={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
-                                        <span className="card-title"><Link to={`/item/${item._id}`}>{item.itemName}</Link></span>
-
+                                        <CardMedia image={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
                                     <CardContent>
+                                        <Link to={`/item/${item._id}`} style={{textDecoration:"none", color:"black"}}>
+                                            {item.itemName}
+                                        </Link>
                                         {this.renderLikes(item)}
                                         <p>${item.itemPrice}</p>
                                         <p>{item.itemDesc}</p>
