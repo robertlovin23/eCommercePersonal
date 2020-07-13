@@ -1,4 +1,5 @@
 import React from 'react'
+import {Button} from '@material-ui/core'
 import {connect} from 'react-redux'
 import {addComment, deleteComment} from '../../actions'
 import { Field, reduxForm } from 'redux-form'
@@ -23,7 +24,7 @@ class CommentForm extends React.Component{
             <div>
                 <form onSubmit={this.props.handleSubmit(this.onSubmitForm)}>
                     <Field name="commentBody" type="text" component={this.renderInputFields} label="Comment..."/> 
-                    <button className="waves-effect waves-light btn" type="submit">Submit</button>
+                    <Button variant="contained" color="primary" type="submit">Submit</Button>
                 </form>
             </div>
         )
