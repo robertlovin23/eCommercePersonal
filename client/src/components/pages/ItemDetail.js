@@ -43,6 +43,7 @@ class ItemDetail extends React.Component{
                     console.log(comment,user)
                     if(user._id === comment.userId){
                         return(
+                        <React.Fragment>
                             <ListItem key={comment._id}>
                                 <div>
                                     {this.deleteComments(comment.userId,comment._id, id)}
@@ -59,6 +60,8 @@ class ItemDetail extends React.Component{
 
                                 </div>
                             </ListItem>
+                            <Divider variant="inset" component="li" />
+                        </React.Fragment>
                         )
                     }
                 })

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button} from '@material-ui/core'
+import {Button,FormControl} from '@material-ui/core'
 import {connect} from 'react-redux'
 import {addComment, deleteComment} from '../../actions'
 import { Field, reduxForm } from 'redux-form'
@@ -8,10 +8,14 @@ class CommentForm extends React.Component{
 
     renderInputFields = ({input,label,type,meta}) => {
         return(
-            <div className="input-field col s12">
-                <input placeholder={label} type={type} {...input} autoComplete="off"/>
-                <label htmlFor={label}/>
-            </div>
+                <FormControl fullWidth className={classes.margin}>
+                    <InputLabel htmlFor={label}/>
+                    <Input
+                        {...input} 
+                        type={type}
+                        autoComplete="pff"
+                    />
+                </FormControl>
         )
     }
     onSubmitForm = (formValues) => {
