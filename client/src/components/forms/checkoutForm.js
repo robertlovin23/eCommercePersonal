@@ -1,5 +1,6 @@
 import React from 'react';
 import {ElementsConsumer, CardElement} from '@stripe/react-stripe-js';
+import {Button,Typography} from '@material-ui/core'
 import {connect} from 'react-redux'
 import {deleteCart, fetchCart, addPayment,deleteItem} from '../../actions'
 import CardSection from '../layout/card'
@@ -59,7 +60,7 @@ class CheckoutForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <CardSection />
-        <button disabled={!this.props.stripe} className="waves-effect waves-light btn" type="submit">Confirm order</button>
+        <Button disabled={!this.props.stripe} variant="contained" color="primary" type="submit">Confirm order</Button>
       </form>
     );
   }

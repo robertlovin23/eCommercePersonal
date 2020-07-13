@@ -60,7 +60,7 @@ class ItemDetail extends React.Component{
 
                                 </div>
                             </ListItem>
-                            <Divider variant="inset" component="li" />
+                            <Divider variant="inset" component="li" style={{marginLeft:"0px"}}/>
                         </React.Fragment>
                         )
                     }

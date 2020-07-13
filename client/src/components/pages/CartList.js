@@ -2,6 +2,7 @@ import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import {Elements,CardElement,ElementsConsumer} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
+import {Button,TableCell,TableRow,TableHead,Table,TableContainer, Typography} from '@material-ui/core'
 import {connect} from 'react-redux'
 import CheckoutForm from '../forms/checkoutForm'
 import {userPay, fetchCart, fetchItems,fetchUser,deleteFromCart,addToCart, makeCart, addPayment} from '../../actions'
@@ -34,13 +35,13 @@ class CartList extends React.Component{
             return this.props.cart.cartContents.map(cartItems => {
                         if(cartItems.itemIds && cartItems.itemCount > 0){
                             return(
-                                <tr key={cartItems.itemIds}>
-                                    <td>{cartItems.itemName}</td>
-                                    <td>{cartItems.itemPrice}</td>
-                                    <td>{cartItems.itemCount}</td>
-                                    <td><button className="waves-effect waves-light btn" onClick={() => this.props.addToCart(cartItems.itemIds)}>Add More</button></td>
-                                    <td><button className="waves-effect waves-light btn" onClick={() => this.props.deleteFromCart(cartItems.itemIds)}>Delete</button></td> 
-                                </tr>
+                                <TableRow key={cartItems.itemIds}>
+                                    <TableCell>{cartItems.itemName}</TableCell>
+                                    <TableCell>{cartItems.itemPrice}</TableCell>
+                                    <TableCell>{cartItems.itemCount}</TableCell>
+                                    <TableCell><Button variant="contained" color="primary" onClick={() => this.props.addToCart(cartItems.itemIds)}>Add More</Button></TableCell>
+                                    <TableCell><Button variant="contained" color="secondary" onClick={() => this.props.deleteFromCart(cartItems.itemIds)}>Delete</Button></TableCell> 
+                                </TableRow>
                             )
 
                     }              
@@ -88,22 +89,23 @@ class CartList extends React.Component{
 
         return(
             <div>
-                <h4>Shopping Cart</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Add More</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
+                <Typography varaint="h4">Shopping Cart</Typography>
 
-                    <tbody>
+                <Table >
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Name</TableCell>
+                            <TableCell align="right">Price</TableCell>
+                            <TableCell align="right">Quantity</TableCell>
+                            <TableCell align="right">Add More</TableCell>
+                            <TableCell align="right">Delete</TableCell>
+                        </TableRow>
+                    </TableHead>
+
+                    <TableBody>
                         {this.renderCartRow()}
-                    </tbody>
-                </table>
+                    </TableBody>
+                </Table>
                 <br/>
                 <div style={{marginBottom: '10px'}}>
                     <b style={{display:'inline'}}>Total: $ {this.props.cart.totalPrice}</b>
