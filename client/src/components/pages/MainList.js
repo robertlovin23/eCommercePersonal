@@ -11,7 +11,7 @@ class MainList extends React.Component{
     }
 
     renderLikes = (item) => {
-        const likedItem = item.usersLiked === undefined ? <div>Loading...</div> : <div style={{display:'inline', marginTop:"5px",marginRight:"5px",  verticalAlign: "top"}}>{item.usersLiked.length}</div>
+        const likedItem = item.usersLiked === undefined ? <div>Loading...</div> : <div style={{display:'inline',marginRight:"5px",  verticalAlign: "top"}}>{item.usersLiked.length}</div>
         // for(var i = 0; i < item.usersLiked; i++){
             console.log(item.usersLiked[0] !== this.props.auth._id)
             if(item.usersLiked[0] !== this.props.auth._id){
