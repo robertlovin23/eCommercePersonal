@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from '@material-ui/core'
 import {fetchUser,fetchItems} from '../actions';
 import {connect} from 'react-redux';
 import MainList from './pages/MainList';
@@ -20,7 +21,7 @@ class App extends React.Component{
 
   render(){
     return(
-      <div className="container">
+      <Container>
         <Router history={history}>
           <Header/>
             <Switch>
@@ -33,7 +34,7 @@ class App extends React.Component{
               <Route path="/profile/:id" exact component={UserProfile}/>
             </Switch>
         </Router>
-      </div>
+      </Container>
     )
   }
 }
