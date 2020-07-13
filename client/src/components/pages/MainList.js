@@ -56,14 +56,14 @@ class MainList extends React.Component{
                                     <CardMedia image={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
                                         <CardContent>
                                             <Link to={`/item/${item._id}`} style={{textDecoration:"none", color:"black"}}>
-                                                <Typography variant={h4}>
+                                                <Typography variant="h4">
                                                     {item.itemName}
                                                 </Typography> 
                                             </Link>
-                                            <Typography variant={subtitle1}>
+                                            <Typography variant="subtitle1">
                                                 ${item.itemPrice}
                                             </Typography>
-                                            <Typography variant={body1}>
+                                            <Typography variant="body1">
                                                 {item.itemDesc}
                                             </Typography>
 
@@ -88,15 +88,15 @@ class MainList extends React.Component{
                                         <CardMedia image={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
                                         <CardContent>
                                             <Link to={`/item/${item._id}`} style={{textDecoration:"none", color:"black"}}>
-                                                <Typography variant={h4}>
+                                                <Typography variant="h4">
                                                     {item.itemName}
                                                 </Typography> 
                                             </Link>
                                             {this.renderLikes(item)}
-                                            <Typography variant={subtitle1}>
+                                            <Typography variant="subtitle1">
                                                 ${item.itemPrice}
                                             </Typography>
-                                            <Typography variant={body1}>
+                                            <Typography variant="body1">
                                                 {item.itemDesc}
                                             </Typography>
                                         </CardContent>
@@ -115,7 +115,7 @@ class MainList extends React.Component{
         return(
             <div>
                 <div style={{margin:"0 auto"}}>
-                    <Typography varaint={h3}>All Items</Typography>
+                    <Typography variant="h3">All Items</Typography>
                 </div>
                 <Grid container spacing={3}>
                     {this.renderItems()}
