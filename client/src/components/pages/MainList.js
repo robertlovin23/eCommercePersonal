@@ -115,7 +115,7 @@ class MainList extends React.Component{
         return(
             <div>
                 <div style={{margin:"0 auto"}}>
-                    <Typography variant="h3">All Items</Typography>
+                    <Typography variant="h3" style={{marginTop:"10px", marginBottom:"10px"}}>All Items</Typography>
                 </div>
                 <Grid container spacing={3}>
                     {this.renderItems()}

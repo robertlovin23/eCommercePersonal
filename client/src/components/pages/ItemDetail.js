@@ -1,6 +1,7 @@
 import React from 'react'
 import CommentForm from '../forms/commentForm'
-import {Button,Container,Grid,Typography} from '@material-ui/core'
+import CloseIcon from '@material-ui/icons/Close';
+import {Button,Container,Grid,Typography, Divider, List, ListItem, ListItemAvatar, Avatar, ListItemText, IconButton} from '@material-ui/core'
 import _ from 'lodash'
 import {connect} from 'react-redux'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
@@ -25,9 +26,9 @@ class ItemDetail extends React.Component{
             } else if(this.props.auth._id === id){
                     return(
                         <div>
-                            <a className="secondary-content" onClick={() => this.props.deleteComment(itemId,commentId)}>
-                                <i className="small material-icons">close</i>
-                            </a>
+                            <IconButton onClick={() => this.props.deleteComment(itemId,commentId)}>
+                                <CloseIcon>close</CloseIcon>
+                            </IconButton>
                         </div>
                     )
             }
@@ -42,7 +43,7 @@ class ItemDetail extends React.Component{
                     console.log(comment,user)
                     if(user._id === comment.userId){
                         return(
-                            <div className="collection-item" key={comment._id}>
+                            <ListItem key={comment._id}>
                                 <div>
                                     {this.deleteComments(comment.userId,comment._id, id)}
                                     <div>
@@ -50,12 +51,14 @@ class ItemDetail extends React.Component{
                                         {comment.commentLikesAdded}
                                         <KeyboardArrowDownIcon onClick={() => this.props.deleteCommentLike(comment._id, id)}></KeyboardArrowDownIcon> */}
                                     </div>
-                                    <img src={user.profilePic}/> 
+                                    <ListItemAvatar>
+                                        <Avatar src={user.profilePic} alt={user.displayName}/> 
+                                    </ListItemAvatar>
                                     <b style={{display:"block"}}>{user.displayName}</b>       
-                                    <p>{comment.commentBody}</p>
+                                    <Typography variant="body1">{comment.commentBody}</Typography>
 
                                 </div>
-                            </div>
+                            </ListItem>
                         )
                     }
                 })
@@ -67,9 +70,9 @@ class ItemDetail extends React.Component{
                 )
             } else {
                 return(
-                    <div className="collection"> 
+                    <List> 
                         {response}
-                    </div>
+                    </List>
                 )
             }
         }
@@ -86,17 +89,19 @@ class ItemDetail extends React.Component{
                         if(user._id === like){
                             console.log(user.profilePic)
                             return (
-                                <li style={{marginTop:"20px"}}>
-                                    <img src={user.profilePic} style={{marginBottom:"-20px", marginRight: "10px", borderRadius: "50%"}}/>        
-                                    {user.displayName}
-                                </li>
+                                <ListItem style={{marginTop:"20px"}}>
+                                    <ListItemAvatar>
+                                        <Avatar src={user.profilePic} style={{marginBottom:"-20px", marginRight: "10px", borderRadius: "50%"}}/> 
+                                    </ListItemAvatar>     
+                                    <ListItemText primary={user.displayName}/>
+                                </ListItem>
                             )
                         }
                     })       
                 })                    
                 return(
                     <div>
-                        Liked By:<ul> {response}</ul>
+                        Liked By:<List> {response}</List>
                     </div>
                 )
 
@@ -122,28 +127,30 @@ class ItemDetail extends React.Component{
             if(image){
                 return(
                     <div>
-                        <div className="row">
-                            <div className="col m9 s12">
+                        <Grid container spacing="3">
+                            <Grid item xs={9}>
                                 <img src={`data:image/jpeg;base64,${image}`} style={{marginTop:"40px",width:"100%"}}></img>
-                            </div>
+                            </Grid>
 
-                            <div className="col m3 s12">
+                            <Grid item xs={3}>
                                 <div>
-                                    <h3>{itemName}</h3>
-                                    <h4>${itemPrice}</h4>
-                                    <p>{itemDesc}</p>
+                                    <Typography variant="h3">{itemName}</Typography>
+                                    <Typography variant="h4">${itemPrice}</Typography>
+                                    <Typography variant="body1">{itemDesc}</Typography>
                                 </div>
 
                                 {this.showWhoLiked()}
 
                                 <br/>
-                                <button className="waves-effect waves-light btn" onClick={() => this.fetchItem()}>
+                                <Button variant="contained" color="primary" onClick={() => this.fetchItem()}>
                                     Add to Cart
-                                </button>
-                            </div>
-                        </div>
+                                </Button>
+                            </Grid>
+                        </Grid>
                         <div>
-                            <h4 style={{textAlign: 'center'}}>Comments</h4>
+                            <Typography variant="h3" style={{textAlign: 'center'}}>
+                                Comments
+                            </Typography>
                             {this.renderComments(_id)}
                             <CommentForm itemId={_id}></CommentForm>
                         </div>
