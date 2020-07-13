@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {createItem} from '../../actions'
+import {Button,Typography,Input,InputLabel,FormControl} from '@material-ui/core'
 import { Field, reduxForm } from 'redux-form'
 import Dropzone from 'react-dropzone'
 
@@ -8,11 +9,15 @@ class ItemForm extends React.Component{
 
     renderInputFields = ({input,label,type,meta}) => {
         return(
-            <div className="input-field col s12">
-                <input placeholder={label} type={type} {...input} autoComplete="off"/>
-                <label htmlFor={label}/>
-            </div>
-        )
+            <FormControl fullWidth>
+                <InputLabel htmlFor={label}/>
+                <Input
+                    {...input} 
+                    type={type}
+                    autoComplete="off"
+                />
+            </FormControl>
+            )
     }
 
 
@@ -23,8 +28,8 @@ class ItemForm extends React.Component{
             {({getRootProps, getInputProps}) => (
                 <section>
                 <div {...getRootProps()}>
-                    <input {...getInputProps()} type={type}/>
-                    <p>{label}</p>
+                    <Input {...getInputProps()} type={type}/>
+                    <Typography variant="body1">{label}</Typography>
                 </div>
                 </section>
             )}
@@ -48,7 +53,7 @@ class ItemForm extends React.Component{
                     <Field name="itemDesc" type="text" component={this.renderInputFields} label="Item Description"/> 
                     <Field name="itemQty" type="text" component={this.renderInputFields} label="Item Quantity"/> 
                     <Field name="itemImg" type="file" component={this.renderFiles} label="Item Image"/> 
-                    <button className="waves-effect waves-light btn" type="submit">Submit</button>
+                    <Button variant="contained" color="primary" type="submit">Submit</Button>
                 </form>
             </div>
         )

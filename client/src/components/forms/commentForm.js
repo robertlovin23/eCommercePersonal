@@ -13,7 +13,7 @@ class CommentForm extends React.Component{
                     <Input
                         {...input} 
                         type={type}
-                        autoComplete="pff"
+                        autoComplete="off"
                     />
                 </FormControl>
         )

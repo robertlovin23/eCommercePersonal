@@ -1,6 +1,6 @@
 import React from 'react'
 import ItemForm from '../forms/itemForm'
-
+import {Button,Typography} from '@material-ui/core'
 import {connect} from 'react-redux'
 import {createItem} from '../../actions'
 
@@ -45,7 +45,7 @@ class NewItem extends React.Component{
     render(){
         return(
             <div>
-                <h3>Create Item</h3>
+                <Typography variant="h3">Create Item</Typography>
                 <ItemForm onSubmit={this.onSubmit} onFileDrop={this.onFileDrop}/>
             </div>
         )
