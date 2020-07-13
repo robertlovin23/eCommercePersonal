@@ -89,7 +89,7 @@ class CartList extends React.Component{
 
         return(
             <div>
-                <Typography varaint="h4">Shopping Cart</Typography>
+                <Typography variant="h3" style={{marginTop:"10px",marginBottom:"10px"}}>Your Cart</Typography>
 
                 <Table >
                     <TableHead>
