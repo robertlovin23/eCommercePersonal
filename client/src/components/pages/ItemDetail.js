@@ -104,7 +104,7 @@ class ItemDetail extends React.Component{
                 })                    
                 return(
                     <div>
-                        Liked By:<List> {response}</List>
+                        <Typography variant="body1">Liked By:<List> {response}</List></Typography>
                     </div>
                 )
 
@@ -143,13 +143,12 @@ class ItemDetail extends React.Component{
                                     </div>
                                     <Typography variant="body1">{itemDesc}</Typography>
                                 </div>
-                                
-                                {this.showWhoLiked()}
 
                                 <br/>
                                 <Button variant="contained" color="primary" onClick={() => this.fetchItem()}>
                                     Add to Cart
                                 </Button>
+                                {this.showWhoLiked()}
                             </Grid>
                         </Grid>
                         <div>
