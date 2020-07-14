@@ -8,7 +8,7 @@ class CommentForm extends React.Component{
 
     renderInputFields = ({input,label,type,meta}) => {
         return(
-                <FormControl fullWidth>
+                <FormControl fullWidth style={{marginBottom:"10px"}}>
                     <InputLabel htmlFor={label}/>
                     <Input
                         {...input} 
