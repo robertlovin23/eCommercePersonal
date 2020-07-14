@@ -13,7 +13,7 @@ class ItemForm extends React.Component{
                 <TextField
                         id="standard-full-width"
                         type={type}
-                        style={{ margin: 8 }}
+                        style={{ marginBottom: 5 }}
                         {...input}
                         placeholder={label}
                         fullWidth
