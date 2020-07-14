@@ -37,10 +37,10 @@ class CartList extends React.Component{
                             return(
                                 <TableRow key={cartItems.itemIds}>
                                     <TableCell >{cartItems.itemName}</TableCell>
-                                    <TableCell align="right">{cartItems.itemPrice}</TableCell>
-                                    <TableCell align="right">{cartItems.itemCount}</TableCell>
-                                    <TableCell align="right"><Button variant="contained" color="primary" onClick={() => this.props.addToCart(cartItems.itemIds)}>Add</Button></TableCell>
-                                    <TableCell align="right"><Button variant="contained" color="secondary" onClick={() => this.props.deleteFromCart(cartItems.itemIds)}>Delete</Button></TableCell> 
+                                    <TableCell >{cartItems.itemPrice}</TableCell>
+                                    <TableCell >{cartItems.itemCount}</TableCell>
+                                    <TableCell ><Button variant="contained" color="primary" onClick={() => this.props.addToCart(cartItems.itemIds)}>Add</Button></TableCell>
+                                    <TableCell ><Button variant="contained" color="secondary" onClick={() => this.props.deleteFromCart(cartItems.itemIds)}>Delete</Button></TableCell> 
                                 </TableRow>
                             )
 
@@ -95,10 +95,10 @@ class CartList extends React.Component{
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>
-                            <TableCell align="right">Price</TableCell>
-                            <TableCell align="right">Quantity</TableCell>
-                            <TableCell align="right">Add</TableCell>
-                            <TableCell align="right">Delete</TableCell>
+                            <TableCell >Price</TableCell>
+                            <TableCell >Quantity</TableCell>
+                            <TableCell >Add</TableCell>
+                            <TableCell >Delete</TableCell>
                         </TableRow>
                     </TableHead>
 
