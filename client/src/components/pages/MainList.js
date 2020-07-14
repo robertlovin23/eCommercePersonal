@@ -8,6 +8,7 @@ import {fetchItems,fetchUser,addLike,deleteLike} from '../../actions'
 class MainList extends React.Component{
     componentDidMount(){
         this.props.fetchItems();
+        console.log(this.props)
     }
 
     renderLikes = (item) => {
