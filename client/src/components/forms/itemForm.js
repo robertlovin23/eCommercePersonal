@@ -10,12 +10,18 @@ class ItemForm extends React.Component{
     renderInputFields = ({input,label,type,meta}) => {
         return(
             <FormControl fullWidth>
-                <InputLabel htmlFor={label}/>
-                <Input
-                    {...input} 
-                    type={type}
-                    autoComplete="off"
-                />
+                <TextField
+                        id="standard-full-width"
+                        type={type}
+                        style={{ margin: 8 }}
+                        {...input}
+                        placeholder={label}
+                        fullWidth
+                        margin="normal"
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                    />
             </FormControl>
             )
     }
@@ -24,7 +30,7 @@ class ItemForm extends React.Component{
     renderFiles = ({type,meta,label,name}) => {
         return(
         <div>
-            <Dropzone onDrop={acceptedFiles => this.props.onFileDrop(acceptedFiles)} style={{marginBottom:"10px", marginTop:"10px"}}>
+            <Dropzone onDrop={acceptedFiles => this.props.onFileDrop(acceptedFiles)} >
             {({getRootProps, getInputProps}) => (
                 <section>
                 <div {...getRootProps()}>
@@ -52,7 +58,7 @@ class ItemForm extends React.Component{
                     <Field name="itemPrice" type="number" component={this.renderInputFields} label="Item Price"/> 
                     <Field name="itemDesc" type="text" component={this.renderInputFields} label="Item Description"/> 
                     <Field name="itemQty" type="text" component={this.renderInputFields} label="Item Quantity"/> 
-                    <Field name="itemImg" type="file" component={this.renderFiles} label="Item Image"/> 
+                    <Field name="itemImg" type="file" component={this.renderFiles} label="Item Image" style={{marginBottom:"10px", marginTop:"10px"}}/> 
                     <Button variant="contained" color="primary" type="submit">Submit</Button>
                 </form>
             </div>

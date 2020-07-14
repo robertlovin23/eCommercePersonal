@@ -23,7 +23,7 @@ class UserProfile extends React.Component{
                 <div>
                     <img src={this.props.auth.profilePic} style={{width:"100px", height: "100px",borderRadius:"10%"}}/>
                     <div>
-                        <Typography variant="h5">{this.props.auth.displayName}</Typography>
+                        <Typography variant="h5" style={{marginTop:"10px",marginBottom:"10px"}}>{this.props.auth.displayName}</Typography>
                     </div>
                     <div>
                         <Button variant="contained" color="primary" component={Link} to={"/items/new"}>List New Item</Button>
