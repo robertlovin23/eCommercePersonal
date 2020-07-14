@@ -32,7 +32,7 @@ class ItemForm extends React.Component{
         <div>
             <Dropzone onDrop={acceptedFiles => this.props.onFileDrop(acceptedFiles)} >
             {({getRootProps, getInputProps}) => (
-                <section>
+                <section style={{marginBottom:"10px", marginTop:"10px"}}>
                 <div {...getRootProps()}>
                     <input {...getInputProps()} type={type}/>
                     <Typography variant="body1">{label}</Typography>
@@ -53,12 +53,12 @@ class ItemForm extends React.Component{
         console.log(this.props)
         return(
             <div>
-                <form onSubmit={this.props.handleSubmit(this.onSubmitForm)} method="post" encType="multipart/form-data">
+                <form onSubmit={this.props.handleSubmit(this.onSubmitForm)} method="post" encType="multipart/form-data" style={{marginBottom:"10px", marginTop:"10px"}}>
                     <Field name="itemName" type="text" component={this.renderInputFields} label="Item Name"/> 
                     <Field name="itemPrice" type="number" component={this.renderInputFields} label="Item Price"/> 
                     <Field name="itemDesc" type="text" component={this.renderInputFields} label="Item Description"/> 
                     <Field name="itemQty" type="text" component={this.renderInputFields} label="Item Quantity"/> 
-                    <Field name="itemImg" type="file" component={this.renderFiles} label="Item Image" style={{marginBottom:"10px", marginTop:"10px"}}/> 
+                    <Field name="itemImg" type="file" component={this.renderFiles} label="Item Image" /> 
                     <Button variant="contained" color="primary" type="submit">Submit</Button>
                 </form>
             </div>

@@ -104,7 +104,7 @@ class ItemDetail extends React.Component{
                 })                    
                 return(
                     <div>
-                        <Typography variant="body1">Liked By:<List> {response}</List></Typography>
+                        <Typography variant="body1" style={{marginBottom:"20px"}}>Liked By:<List> {response}</List></Typography>
                     </div>
                 )
 
