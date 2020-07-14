@@ -148,7 +148,9 @@ class ItemDetail extends React.Component{
                                 <Button variant="contained" color="primary" onClick={() => this.fetchItem()}>
                                     Add to Cart
                                 </Button>
-                                {this.showWhoLiked()}
+                                <div style={{marginTop:"10px"}}>
+                                    {this.showWhoLiked()}
+                                </div>
                             </Grid>
                         </Grid>
                         <div>
