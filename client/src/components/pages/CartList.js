@@ -35,7 +35,7 @@ class CartList extends React.Component{
             return this.props.cart.cartContents.map(cartItems => {
                         if(cartItems.itemIds && cartItems.itemCount > 0){
                             return(
-                                <TableRow key={cartItems.itemIds}>
+                                <TableRow key={cartItems.itemIds} wrap="nowrap" direction="row" alignItems="center">
                                     <TableCell style={{padding:'7px'}}>{cartItems.itemName}</TableCell>
                                     <TableCell style={{padding:'7px'}}>{cartItems.itemPrice}</TableCell>
                                     <TableCell style={{padding:'7px'}}>{cartItems.itemCount}</TableCell>
@@ -102,7 +102,7 @@ class CartList extends React.Component{
                         </TableRow>
                     </TableHead>
 
-                    <TableBody>
+                    <TableBody >
                         {this.renderCartRow()}
                     </TableBody>
                 </Table>
