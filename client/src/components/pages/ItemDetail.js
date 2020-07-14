@@ -137,7 +137,7 @@ class ItemDetail extends React.Component{
 
                             <Grid item xs={12}  md={6} xl={3}>
                                 <div>
-                                    <div style={{marginBottom:"15px"}}>
+                                    <div style={{marginBottom:"15px", marginTop:"15px"}}>
                                         <Typography variant="h3">{itemName}</Typography>
                                         <Typography variant="h4">${itemPrice}</Typography>
                                     </div>
