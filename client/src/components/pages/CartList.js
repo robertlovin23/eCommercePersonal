@@ -36,7 +36,7 @@ class CartList extends React.Component{
                         if(cartItems.itemIds && cartItems.itemCount > 0){
                             return(
                                 <TableRow key={cartItems.itemIds}>
-                                    <TableCell align="right">{cartItems.itemName}</TableCell>
+                                    <TableCell >{cartItems.itemName}</TableCell>
                                     <TableCell align="right">{cartItems.itemPrice}</TableCell>
                                     <TableCell align="right">{cartItems.itemCount}</TableCell>
                                     <TableCell align="right"><Button variant="contained" color="primary" onClick={() => this.props.addToCart(cartItems.itemIds)}>Add More</Button></TableCell>
