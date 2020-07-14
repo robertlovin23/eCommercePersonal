@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {createItem} from '../../actions'
-import {Button,Typography,Input,InputLabel,FormControl} from '@material-ui/core'
+import {Button,Typography,Input,InputLabel,FormControl,TextField} from '@material-ui/core'
 import { Field, reduxForm } from 'redux-form'
 import Dropzone from 'react-dropzone'
 
