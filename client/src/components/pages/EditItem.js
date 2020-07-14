@@ -53,7 +53,7 @@ class EditItem extends React.Component{
         console.log(this.props.item.item)
         return(
             <div>
-                <h3>Edit Item</h3>
+                <Typography variant="h3" style={{marginBottom:"10px"}}>Edit Item</Typography>
                 <ItemForm onSubmit={this.onSubmit} onFileDrop={this.onFileDrop} initialValues={_.pick(this.props.item.item, 'itemName','itemDesc','itemPrice','quantity')}/>
             </div>
         )
