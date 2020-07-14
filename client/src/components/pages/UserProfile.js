@@ -19,7 +19,7 @@ class UserProfile extends React.Component{
         }
         return(
             <div>
-                <Typography variant="h3" style={{textAlign: "center"}}>My Profile</Typography>
+                <Typography variant="h3" style={{textAlign: "center", marginTop:"20px",marginBottom:"20px"}}>My Profile</Typography>
                 <div>
                     <img src={this.props.auth.profilePic} style={{width:"100px", height: "100px",borderRadius:"10%"}}/>
                     <div>
