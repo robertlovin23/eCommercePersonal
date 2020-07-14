@@ -50,7 +50,7 @@ class MainList extends React.Component{
 
                 if(this.props.auth.twitterId === item.twitterId && item.itemQty > 0 && base64){
                     return(
-                        <Grid key={item._id} item lg={4} md={8} xs={12}>
+                        <Grid key={item._id} item lg={4} md={6} sm={8} xs={12}>
                             <Card>
                                 <CardActionArea>
                                     <CardMedia image={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>
