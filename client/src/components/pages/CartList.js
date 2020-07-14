@@ -108,9 +108,9 @@ class CartList extends React.Component{
                 </Table>
                 <br/>
                 <div style={{marginBottom: '10px'}}>
-                    <b style={{display:'inline'}}>Total: $ {this.props.cart.totalPrice}</b>
+                    <Typography variant="body1" style={{display:'inline'}}>Total: $ {this.props.cart.totalPrice}</Typography>
                 </div>
-                {this.props.cart.totalCount} Items
+                    <Typography variant="body1">{this.props.cart.totalCount} Items</Typography>
                 <br/>
                     {/* <StripeCheckout name="WishBuyer" amount={this.findTotal() * 100} >
                         Checkout
