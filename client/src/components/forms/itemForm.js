@@ -24,11 +24,11 @@ class ItemForm extends React.Component{
     renderFiles = ({type,meta,label,name}) => {
         return(
         <div>
-            <Dropzone onDrop={acceptedFiles => this.props.onFileDrop(acceptedFiles)}>
+            <Dropzone onDrop={acceptedFiles => this.props.onFileDrop(acceptedFiles)} style={{marginBottom:"10px", marginTop:"10px"}}>
             {({getRootProps, getInputProps}) => (
                 <section>
                 <div {...getRootProps()}>
-                    <Input {...getInputProps()} type={type}/>
+                    <input {...getInputProps()} type={type}/>
                     <Typography variant="body1">{label}</Typography>
                 </div>
                 </section>
