@@ -40,7 +40,7 @@ class CartList extends React.Component{
                                     <TableCell style={{padding:'10px'}}>{cartItems.itemPrice}</TableCell>
                                     <TableCell style={{padding:'10px'}}>{cartItems.itemCount}</TableCell>
                                     <TableCell style={{padding:'10px'}}><Button variant="contained" color="primary" onClick={() => this.props.addToCart(cartItems.itemIds)}>Add</Button></TableCell>
-                                    <TableCellstyle={{padding:'10px'}}><Button variant="contained" color="secondary" onClick={() => this.props.deleteFromCart(cartItems.itemIds)}>Delete</Button></TableCell> 
+                                    <TableCell style={{padding:'10px'}}><Button variant="contained" color="secondary" onClick={() => this.props.deleteFromCart(cartItems.itemIds)}>Delete</Button></TableCell> 
                                 </TableRow>
                             )
 
