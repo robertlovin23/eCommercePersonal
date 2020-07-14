@@ -36,11 +36,11 @@ class CartList extends React.Component{
                         if(cartItems.itemIds && cartItems.itemCount > 0){
                             return(
                                 <TableRow key={cartItems.itemIds}>
-                                    <TableCell style={{padding:'10px'}}>{cartItems.itemName}</TableCell>
-                                    <TableCell style={{padding:'10px'}}>{cartItems.itemPrice}</TableCell>
-                                    <TableCell style={{padding:'10px'}}>{cartItems.itemCount}</TableCell>
-                                    <TableCell style={{padding:'10px'}}><Button variant="contained" color="primary" onClick={() => this.props.addToCart(cartItems.itemIds)}>Add</Button></TableCell>
-                                    <TableCell style={{padding:'10px'}}><Button variant="contained" color="secondary" onClick={() => this.props.deleteFromCart(cartItems.itemIds)}>Delete</Button></TableCell> 
+                                    <TableCell style={{padding:'7px'}}>{cartItems.itemName}</TableCell>
+                                    <TableCell style={{padding:'7px'}}>{cartItems.itemPrice}</TableCell>
+                                    <TableCell style={{padding:'7px'}}>{cartItems.itemCount}</TableCell>
+                                    <TableCell style={{padding:'7px'}}><Button variant="contained" color="primary" onClick={() => this.props.addToCart(cartItems.itemIds)}>Add</Button></TableCell>
+                                    <TableCell style={{padding:'7px'}}><Button variant="contained" color="secondary" onClick={() => this.props.deleteFromCart(cartItems.itemIds)}>Delete</Button></TableCell> 
                                 </TableRow>
                             )
 
