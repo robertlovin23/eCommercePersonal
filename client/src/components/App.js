@@ -22,7 +22,7 @@ class App extends React.Component{
 
   render(){
     return(
-      <Container>
+      <div>
         <Router history={history}>
           <Header/>
             <Switch>
@@ -35,7 +35,7 @@ class App extends React.Component{
               <Route path="/profile/:id" exact component={UserProfile}/>
             </Switch>
         </Router>
-      </Container>
+      </div>
     )
   }
 }
