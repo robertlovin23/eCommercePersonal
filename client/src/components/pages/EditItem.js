@@ -1,7 +1,7 @@
 import React from 'react'
 import ItemForm from '../forms/itemForm'
 import _ from 'lodash'
-
+import {Typography} from '@material-ui/core'
 import {connect} from 'react-redux'
 import {editItem,fetchItem} from '../../actions'
 
@@ -53,7 +53,7 @@ class EditItem extends React.Component{
         console.log(this.props.item.item)
         return(
             <div>
-                <Typography variant="h3" style={{marginBottom:"10px"}}>Edit Item</Typography>
+                <Typography variant="h3" style={{marginBottom:"10px", marginTop:"10px"}}>Edit Item</Typography>
                 <ItemForm onSubmit={this.onSubmit} onFileDrop={this.onFileDrop} initialValues={_.pick(this.props.item.item, 'itemName','itemDesc','itemPrice','quantity')}/>
             </div>
         )

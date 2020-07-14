@@ -45,7 +45,7 @@ class NewItem extends React.Component{
     render(){
         return(
             <div>
-                <Typography variant="h3" style={{marginBottom:"10px"}}>Create Item</Typography>
+                <Typography variant="h3" style={{marginBottom:"10px", marginTop:"10px"}}>Create Item</Typography>
                 <ItemForm onSubmit={this.onSubmit} onFileDrop={this.onFileDrop}/>
             </div>
         )
