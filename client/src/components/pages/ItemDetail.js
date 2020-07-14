@@ -131,11 +131,11 @@ class ItemDetail extends React.Component{
                 return(
                     <div>
                         <Grid container spacing="3">
-                            <Grid item xs={9}>
+                            <Grid item xs={12} md={6} xl={9}>
                                 <img src={`data:image/jpeg;base64,${image}`} style={{marginTop:"40px",width:"100%"}}></img>
                             </Grid>
 
-                            <Grid item xs={3}>
+                            <Grid item xs={12}  md={6} xl={3}>
                                 <div>
                                     <div style={{marginBottom:"15px"}}>
                                         <Typography variant="h3">{itemName}</Typography>
