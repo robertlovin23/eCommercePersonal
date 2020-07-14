@@ -36,11 +36,11 @@ class CartList extends React.Component{
                         if(cartItems.itemIds && cartItems.itemCount > 0){
                             return(
                                 <TableRow key={cartItems.itemIds}>
-                                    <TableCell >{cartItems.itemName}</TableCell>
-                                    <TableCell >{cartItems.itemPrice}</TableCell>
-                                    <TableCell >{cartItems.itemCount}</TableCell>
-                                    <TableCell ><Button variant="contained" color="primary" onClick={() => this.props.addToCart(cartItems.itemIds)}>Add</Button></TableCell>
-                                    <TableCell ><Button variant="contained" color="secondary" onClick={() => this.props.deleteFromCart(cartItems.itemIds)}>Delete</Button></TableCell> 
+                                    <TableCell padding={10}>{cartItems.itemName}</TableCell>
+                                    <TableCell padding={10}>{cartItems.itemPrice}</TableCell>
+                                    <TableCell padding={10}>{cartItems.itemCount}</TableCell>
+                                    <TableCell padding={10}><Button variant="contained" color="primary" onClick={() => this.props.addToCart(cartItems.itemIds)}>Add</Button></TableCell>
+                                    <TableCell padding={10}><Button variant="contained" color="secondary" onClick={() => this.props.deleteFromCart(cartItems.itemIds)}>Delete</Button></TableCell> 
                                 </TableRow>
                             )
 
