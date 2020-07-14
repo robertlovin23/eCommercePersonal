@@ -94,11 +94,11 @@ class CartList extends React.Component{
                 <Table wrap="nowrap" direction="row" alignItems="center">
                     <TableHead>
                         <TableRow>
-                            <TableCell >Name</TableCell>
-                            <TableCell >Price</TableCell>
-                            <TableCell >Quantity</TableCell>
-                            <TableCell >Add</TableCell>
-                            <TableCell >Delete</TableCell>
+                            <TableCell style={{padding:'3px'}}>Name</TableCell>
+                            <TableCell style={{padding:'3px'}}>Price</TableCell>
+                            <TableCell style={{padding:'3px'}}>Quantity</TableCell>
+                            <TableCell style={{padding:'3px'}}>Add</TableCell>
+                            <TableCell style={{padding:'3px'}} >Delete</TableCell>
                         </TableRow>
                     </TableHead>
 
