@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Modals from '../layout/Modal'
-import { Dialog,Button} from '@material-ui/core'
+import { Dialog, Button, DialogTitle, DialogContent, DialogContentText, DialogActions} from '@material-ui/core'
 
 import {connect} from 'react-redux'
 import {fetchItem,deleteItem} from '../../actions'
@@ -11,30 +11,38 @@ class DeleteItem extends React.Component{
         this.props.fetchItem(this.props.match.params.id);
     }
 
-    renderModalButtons = () => {
-        return(
-            <React.Fragment>
-                <Button color="primary" onClick={() => this.deleteItem(this.props.match.params.id)}>Delete Item</Button>
-                <Link to={"/"} className="waves-effect waves-light btn">Cancel</Link>
-            </React.Fragment>
-        )
-    }
+    // renderModalButtons = () => {
+    //     return(
+    //         <React.Fragment>
+    //             <Button color="primary" onClick={() => this.deleteItem(this.props.match.params.id)}>Delete Item</Button>
+    //             <Link to={"/"} className="waves-effect waves-light btn">Cancel</Link>
+    //         </React.Fragment>
+    //     )
+    // }
     render(){
 
         return(
-            <div>
-                <h3>Delete Item</h3>
                 <Dialog
-                    open={this.state.openModal}
-                    onClose={this.handleClose}
-                    aria-labelledby="delete-modal-title"
-                >
-                    <Modals title="Delete Item" 
-                            description="Would you like to delete this item?" 
-                            actions={this.renderModalButtons()}
-                    />
-                </Dialog>
-            </div>
+                        open={this.props.openModal}
+                        onClose={this.props.handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogTitle id="alert-dialog-title">{"Delete"}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                                Would you like to delete this item?
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.props.handleClose} color="primary">
+                                Go Back
+                            </Button>
+                            <Button onClick={() => this.props.deleteItem(this.props.match.params)} color="primary" autoFocus>
+                                Delete
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
         )
     }
 }

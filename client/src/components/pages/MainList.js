@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import DeleteItem from '../pages/DeleteItem'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import { Container, Grid, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, IconButton, Typography, Dialog, DialogContentText, DialogContent,DialogTitle,DialogActions } from '@material-ui/core'
 import {fetchItems,fetchUser,addLike,deleteLike} from '../../actions'
@@ -93,7 +94,8 @@ class MainList extends React.Component{
                                     <Button variant="outlined" color="secondary" component={Link} onClick={this.handleOpen}>
                                         Delete
                                     </Button>
-                                        <Dialog
+                                        <DeleteItem openModal={this.state.openModal} handleClose={this.handleClose}/>
+                                        {/* <Dialog
                                             open={this.state.openModal}
                                             onClose={this.handleClose}
                                             aria-labelledby="alert-dialog-title"
@@ -113,7 +115,7 @@ class MainList extends React.Component{
                                                     Delete
                                                 </Button>
                                             </DialogActions>
-                                        </Dialog>
+                                        </Dialog> */}
                                 </CardActions>
                             </Card>
                         </Grid>
