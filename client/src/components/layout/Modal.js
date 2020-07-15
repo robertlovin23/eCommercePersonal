@@ -1,4 +1,5 @@
 import React from 'react'
+import { Modal,Typography } from '@material-ui/core'
 import ReactDOM from 'react-dom'
 
 
