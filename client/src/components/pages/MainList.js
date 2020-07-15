@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import DeleteItem from '../pages/DeleteItem'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import { Container, Grid, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, IconButton, Typography, Dialog, DialogContentText, DialogContent,DialogTitle,DialogActions } from '@material-ui/core'
-import {fetchItems,fetchUser,addLike,deleteLike} from '../../actions'
+import {fetchItems,fetchUser,addLike,deleteLike,deleteCart,deleteItem} from '../../actions'
 
 class MainList extends React.Component{
     state = {
@@ -91,11 +91,11 @@ class MainList extends React.Component{
                                     <Button variant="outlined" color="primary" component={Link} to={`/item/edit/${item._id}`}>
                                         Edit
                                     </Button>
-                                    <Button variant="outlined" color="secondary" component={Link} to={`/item/delete/${item.id}`} onClick={this.handleOpen}>
+                                    <Button variant="outlined" color="secondary" component={Link} onClick={this.handleOpen}>
                                         Delete
                                     </Button>
                                         <DeleteItem openModal={this.state.openModal} handleClose={this.handleClose}/>
-                                        {/* <Dialog
+                                        <Dialog
                                             open={this.state.openModal}
                                             onClose={this.handleClose}
                                             aria-labelledby="alert-dialog-title"
@@ -111,11 +111,11 @@ class MainList extends React.Component{
                                                 <Button onClick={this.handleClose} color="primary">
                                                     Go Back
                                                 </Button>
-                                                <Button onClick={this.handleClose} color="primary" autoFocus>
+                                                <Button onClick={() => this.props.deleteItem(item.id)} color="primary" autoFocus>
                                                     Delete
                                                 </Button>
                                             </DialogActions>
-                                        </Dialog> */}
+                                        </Dialog>
                                 </CardActions>
                             </Card>
                         </Grid>
@@ -175,5 +175,6 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps,{
     fetchItems,
     addLike,
-    deleteLike
+    deleteLike,
+    deleteItem
 })(MainList)
