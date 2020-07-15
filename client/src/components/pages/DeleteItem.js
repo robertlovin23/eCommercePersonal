@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import {fetchItem,deleteItem} from '../../actions'
 
 class DeleteItem extends React.Component{
+
     componentDidMount(){
         this.props.fetchItem(this.props.match.params.id);
     }
@@ -38,7 +39,7 @@ class DeleteItem extends React.Component{
                             <Button onClick={this.props.handleClose} color="primary">
                                 Go Back
                             </Button>
-                            <Button onClick={() => this.props.deleteItem(this.props.match.params)} color="primary" autoFocus>
+                            <Button onClick={() => this.props.deleteItem(this.props.match.params.id)} color="primary" autoFocus>
                                 Delete
                             </Button>
                         </DialogActions>
@@ -46,8 +47,13 @@ class DeleteItem extends React.Component{
         )
     }
 }
+const mapStateToProps = (state,ownProps) => {
+    return {
+        items: state.items[ownProps.match.params.id]
+    }
+}
 
-export default connect(null,{
+export default connect(mapStateToProps,{
     deleteItem,
     fetchItem
 })(DeleteItem)
