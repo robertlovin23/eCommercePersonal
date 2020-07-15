@@ -1,9 +1,8 @@
 import React from 'react'
-import { Modal,Typography } from '@material-ui/core'
 import ReactDOM from 'react-dom'
 
 
-const Modal = (props) => {
+const Modals = (props) => {
     console.log(props)
     return ReactDOM.createPortal(
         <div className="modal-overlay">
@@ -20,4 +19,4 @@ const Modal = (props) => {
     )
 }
 
-export default Modal
+export default Modals
