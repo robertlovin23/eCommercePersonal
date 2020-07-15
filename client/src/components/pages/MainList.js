@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import FavoriteIcon from '@material-ui/icons/Favorite'
-import { Container, Grid, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, IconButton, Typography } from '@material-ui/core'
+import { Container, Grid, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, IconButton, Typography, Dialog, DialogContentText, DialogContent,DialogTitle,DialogActions } from '@material-ui/core'
 import {fetchItems,fetchUser,addLike,deleteLike} from '../../actions'
 
 class MainList extends React.Component{
@@ -90,29 +90,28 @@ class MainList extends React.Component{
                                     <Button variant="outlined" color="primary" component={Link} to={`/item/edit/${item._id}`}>
                                         Edit
                                     </Button>
-                                    <Button variant="outlined" color="secondary" component={Link} to={`/item/delete/${item._id}`} open={this.state.openModal} handleOpen={this.handleOpen} handleClose={this.handleClose}>
+                                    <Button variant="outlined" color="secondary" component={Link} onClick={this.handleOpen}>
                                         Delete
                                     </Button>
                                         <Dialog
-                                            open={open}
-                                            onClose={handleClose}
+                                            open={this.state.open}
+                                            onClose={this.handleClose}
                                             aria-labelledby="alert-dialog-title"
                                             aria-describedby="alert-dialog-description"
                                         >
-                                            <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                                            <DialogTitle id="alert-dialog-title">{"Delete"}</DialogTitle>
                                             <DialogContent>
-                                            <DialogContentText id="alert-dialog-description">
-                                                Let Google help apps determine location. This means sending anonymous location data to
-                                                Google, even when no apps are running.
-                                            </DialogContentText>
+                                                <DialogContentText id="alert-dialog-description">
+                                                    Would you like to delete this item?
+                                                </DialogContentText>
                                             </DialogContent>
                                             <DialogActions>
-                                            <Button onClick={handleClose} color="primary">
-                                                Disagree
-                                            </Button>
-                                            <Button onClick={handleClose} color="primary" autoFocus>
-                                                Agree
-                                            </Button>
+                                                <Button onClick={this.handleClose} color="primary">
+                                                    Go Back
+                                                </Button>
+                                                <Button onClick={this.handleClose} color="primary" autoFocus>
+                                                    Delete
+                                                </Button>
                                             </DialogActions>
                                         </Dialog>
                                 </CardActions>
