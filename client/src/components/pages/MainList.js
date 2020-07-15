@@ -94,7 +94,7 @@ class MainList extends React.Component{
                                         Delete
                                     </Button>
                                         <Dialog
-                                            open={this.state.open}
+                                            open={this.state.openModal}
                                             onClose={this.handleClose}
                                             aria-labelledby="alert-dialog-title"
                                             aria-describedby="alert-dialog-description"
