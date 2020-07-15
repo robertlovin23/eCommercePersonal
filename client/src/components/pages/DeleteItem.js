@@ -49,7 +49,7 @@ class DeleteItem extends React.Component{
 }
 const mapStateToProps = (state,ownProps) => {
     return {
-        items: state.items[ownProps.match.params.id]
+        item: state.item[ownProps.match.params.id]
     }
 }
 
