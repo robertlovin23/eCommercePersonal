@@ -1,19 +1,20 @@
 import React from 'react'
+import {Typography, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@material-ui/core'
 import ReactDOM from 'react-dom'
 
 
 const Modals = (props) => {
     console.log(props)
     return ReactDOM.createPortal(
-        <div className="modal-overlay">
+        <div>
             <div className="modal" id="deleteModal">
-                <div className="modal-content">
-                    <h4>{props.title}</h4>
-                    <p>{props.description}</p>
-                    <div className="modal-footer">
-                        {props.actions}
-                    </div>
-                </div>
+                <DialogTitle>{props.title}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>{props.description}</DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    {props.actions}
+                </DialogActions>
             </div>
         </div>,document.querySelector("#modal")
     )

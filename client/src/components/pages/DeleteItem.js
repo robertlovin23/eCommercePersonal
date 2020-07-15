@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Modals from '../layout/Modal'
-import {Modal} from '@material-ui/core'
+import {Dialog,Button} from '@material-ui/core'
 
 import {connect} from 'react-redux'
 import {fetchItem,deleteItem} from '../../actions'
@@ -30,27 +30,26 @@ class DeleteItem extends React.Component{
     renderModalButtons = () => {
         return(
             <React.Fragment>
-                <button className="waves-effect waves-light btn" onClick={() => this.deleteItem(this.props.match.params.id)}>Delete Item</button>
+                <Button color="primary" onClick={() => this.deleteItem(this.props.match.params.id)}>Delete Item</Button>
                 <Link to={"/"} className="waves-effect waves-light btn">Cancel</Link>
             </React.Fragment>
         )
     }
     render(){
+
         return(
             <div>
                 <h3>Delete Item</h3>
-                <Modal 
+                <Dialog
                     open={this.state.open}
                     onClose={this.handleClose}
                     aria-labelledby="delete-modal-title"
-
                 >
-                    {<Modals 
-                        title="Delete Item"
-                        description="Would you like to delete this item?"
-                        actions={this.renderModalButtons()}
-                    />}
-                </Modal>
+                    <Modals title="Delete Item" 
+                            description="Would you like to delete this item?" 
+                            actions={this.renderModalButtons()}
+                    />
+                </Dialog>
             </div>
         )
     }
