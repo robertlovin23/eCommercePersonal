@@ -6,6 +6,22 @@ import { Container, Grid, Card, CardActionArea, CardActions, CardContent, CardMe
 import {fetchItems,fetchUser,addLike,deleteLike} from '../../actions'
 
 class MainList extends React.Component{
+    state = {
+        openModal: false
+    }
+
+    handleOpen = () => {
+        this.setState({
+            openModal: true
+        })
+    }
+
+    handleClose = () => {
+        this.setState({
+            openModal: false
+        })
+    }
+    
     componentDidMount(){
         this.props.fetchItems();
         console.log(this.props)
@@ -74,9 +90,31 @@ class MainList extends React.Component{
                                     <Button variant="outlined" color="primary" component={Link} to={`/item/edit/${item._id}`}>
                                         Edit
                                     </Button>
-                                    <Button variant="outlined" color="secondary" component={Link} to={`/item/delete/${item._id}`} >
+                                    <Button variant="outlined" color="secondary" component={Link} to={`/item/delete/${item._id}`} open={this.state.openModal} handleOpen={this.handleOpen} handleClose={this.handleClose}>
                                         Delete
                                     </Button>
+                                        <Dialog
+                                            open={open}
+                                            onClose={handleClose}
+                                            aria-labelledby="alert-dialog-title"
+                                            aria-describedby="alert-dialog-description"
+                                        >
+                                            <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                                            <DialogContent>
+                                            <DialogContentText id="alert-dialog-description">
+                                                Let Google help apps determine location. This means sending anonymous location data to
+                                                Google, even when no apps are running.
+                                            </DialogContentText>
+                                            </DialogContent>
+                                            <DialogActions>
+                                            <Button onClick={handleClose} color="primary">
+                                                Disagree
+                                            </Button>
+                                            <Button onClick={handleClose} color="primary" autoFocus>
+                                                Agree
+                                            </Button>
+                                            </DialogActions>
+                                        </Dialog>
                                 </CardActions>
                             </Card>
                         </Grid>

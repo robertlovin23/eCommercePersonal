@@ -7,7 +7,7 @@ const Modals = (props) => {
     console.log(props)
     return ReactDOM.createPortal(
         <div>
-            <div className="modal" id="deleteModal">
+            <div>
                 <DialogTitle>{props.title}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>{props.description}</DialogContentText>

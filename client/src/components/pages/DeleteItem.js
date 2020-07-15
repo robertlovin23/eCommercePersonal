@@ -1,28 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Modals from '../layout/Modal'
-import {Dialog,Button} from '@material-ui/core'
+import { Dialog,Button} from '@material-ui/core'
 
 import {connect} from 'react-redux'
 import {fetchItem,deleteItem} from '../../actions'
 
 class DeleteItem extends React.Component{
-    state = {
-        openModal: false
-    }
-
-    handleOpen = () => {
-        this.setState({
-            openModal: true
-        })
-    }
-
-    handleClose = () => {
-        this.setState({
-            openModal: false
-        })
-    }
-
     componentDidMount(){
         this.props.fetchItem(this.props.match.params.id);
     }
@@ -41,7 +25,7 @@ class DeleteItem extends React.Component{
             <div>
                 <h3>Delete Item</h3>
                 <Dialog
-                    open={this.state.open}
+                    open={this.state.openModal}
                     onClose={this.handleClose}
                     aria-labelledby="delete-modal-title"
                 >
