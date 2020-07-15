@@ -40,7 +40,7 @@ class DeleteItem extends React.Component{
             <div>
                 <h3>Delete Item</h3>
                 <Modal 
-                    open={open}
+                    open={this.state.open}
                     onClose={this.handleClose}
                     aria-labelledby="delete-modal-title"
 
