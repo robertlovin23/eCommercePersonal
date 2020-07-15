@@ -170,7 +170,7 @@ class ItemDetail extends React.Component{
 
 const mapStateToProps = (state,ownProps) => {
     return{
-        item: state.item[ownProps.match.params.id],
+        item: state.item,
         auth: state.auth,
         cart: state.cart,
         user: Object.values(state.user)
