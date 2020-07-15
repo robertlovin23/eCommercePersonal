@@ -94,7 +94,7 @@ class MainList extends React.Component{
                                     <Button variant="outlined" color="secondary" component={Link} onClick={this.handleOpen}>
                                         Delete
                                     </Button>
-                                        <DeleteItem openModal={this.state.openModal} handleClose={this.handleClose}/>
+                                        {/* <DeleteItem openModal={this.state.openModal} handleClose={this.handleClose}/> */}
                                         <Dialog
                                             open={this.state.openModal}
                                             onClose={this.handleClose}
