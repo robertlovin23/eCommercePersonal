@@ -91,7 +91,7 @@ class MainList extends React.Component{
                                     <Button variant="outlined" color="primary" component={Link} to={`/item/edit/${item._id}`}>
                                         Edit
                                     </Button>
-                                    <Button variant="outlined" color="secondary" component={Link} onClick={() => this.props.deleteItem(item._id)}>
+                                    <Button variant="outlined" color="secondary" component={Link} onClick={this.handleOpen}>
                                         Delete
                                     </Button>
                                         {/* <DeleteItem openModal={this.state.openModal} handleClose={this.handleClose}/> */}
@@ -111,7 +111,7 @@ class MainList extends React.Component{
                                                 <Button onClick={this.handleClose} color="primary">
                                                     Go Back
                                                 </Button>
-                                                <Button onClick={() => this.props.deleteItem(item.id)} color="primary" autoFocus>
+                                                <Button onClick={() => this.props.deleteItem(item._id)} color="primary" autoFocus>
                                                     Delete
                                                 </Button>
                                             </DialogActions>
