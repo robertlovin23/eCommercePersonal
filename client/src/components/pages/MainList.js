@@ -122,7 +122,7 @@ class MainList extends React.Component{
                     )
                 } else if (item.itemQty > 0) {
                         return(
-                            <Grid key={item._id} lg={4} md={6} sm={8} xs={12}>
+                            <Grid key={item._id} item lg={4} md={6} sm={8} xs={12}>
                                 <Card>
                                     <CardActionArea>
                                         <CardMedia image={`data:image/jpeg;base64,${base64}`} style={{height:"250px"}}/>

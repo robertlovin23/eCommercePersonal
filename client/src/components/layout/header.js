@@ -113,7 +113,7 @@ class Header extends React.Component{
                             <nav style={{width:"0%",lineHeight:'0px',paddingTop:"50px"}}>
                                 <List>
                                     <ListItem>
-                                        <Link style={{textDecoration: 'none'}} to="/">
+                                        <Link style={{textDecoration: 'none', color: 'white'}} to="/">
                                             <ListItemText primary="Home"/>
                                         </Link>
                                     </ListItem>
