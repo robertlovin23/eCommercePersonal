@@ -52,7 +52,7 @@ class Header extends React.Component{
             return(
                 <React.Fragment>
                         <ListItem>
-                            <a href="/auth/twitter">
+                            <a href="/auth/twitter" style={{color:"white", textDecoration:"none"}}>
                                 <ListItemText primary="Login"/>
                             </a>
                         </ListItem>
@@ -63,7 +63,7 @@ class Header extends React.Component{
                 <React.Fragment>
                         <ListItem>
                             <img src={auth.profilePic} style={{height:"25px",width:"25px",float:"left", marginRight: '10px'}}/>
-                            <Link style={{textDecoration: 'none'}} to={`/profile/${auth.twitterId}`}>
+                            <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${auth.twitterId}`}>
                                 <ListItemText primary="Profile"/>
                             </Link>
                         </ListItem>
