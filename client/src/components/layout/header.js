@@ -68,13 +68,13 @@ class Header extends React.Component{
                             </Link>
                         </ListItem>
                         <ListItem>
-                            <Link style={{textDecoration: 'none', display:"inline-block"}} to={`/cart/${auth._id}`}>
+                            <Link style={{textDecoration: 'none', display:"inline-block", color:"white"}} to={`/cart/${auth._id}`}>
                                 <i className="material-icons">shopping_cart</i>
                             </Link>
 
                         </ListItem>
                         <ListItem>
-                            <a style={{textDecoration: 'none'}} href="/api/logout">
+                            <a style={{textDecoration: 'none', color:"white"}} href="/api/logout">
                                 <ListItemText primary="Logout"/>
                             </a>
                         </ListItem>
