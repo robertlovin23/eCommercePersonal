@@ -52,9 +52,9 @@ class Header extends React.Component{
             return(
                 <React.Fragment>
                         <ListItem>
-                            <a href="/auth/twitter" style={{color:"white", textDecoration:"none"}}>
+                            <Link href="/auth/twitter" style={{color:"white", textDecoration:"none"}}>
                                 <ListItemText primary="Login"/>
-                            </a>
+                            </Link>
                         </ListItem>
                 </React.Fragment>
             )
