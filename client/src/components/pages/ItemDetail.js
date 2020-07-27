@@ -115,10 +115,12 @@ class ItemDetail extends React.Component{
 
 
     fetchItem = (id) => {
-        if(!this.props.cart){
+        if(!this.props.cart || this.props.auth._id !== null){
             this.props.makeCart();
+        } else if (this.props.cart.totalCount < 1){
+            this.props.addToCart(id);
         }
-        this.props.addToCart(id);
+
     }
 
     render(){
@@ -130,7 +132,7 @@ class ItemDetail extends React.Component{
             
             const { itemName, itemPrice, itemDesc, _id, usersLiked } = this.props.item.item
             const image = this.props.item.itemImgBase64
-            console.log(this.props.item)
+            console.log(this.props.cart)
             if(image){
                 return(
                     <div>
