@@ -13,7 +13,9 @@ class CartList extends React.Component{
     componentDidMount(){
         // this.props.fetchItems();
         // this.props.makeCart();
-        this.props.fetchCart(this.props.match.params.id)
+        if(this.props.cart){
+            this.props.fetchCart(this.props.match.params.id)
+        }
 
         // if(this.props.match.params.id){
         //     this.props.fetchCart(this.props.match.params.id)
