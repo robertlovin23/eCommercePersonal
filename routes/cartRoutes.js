@@ -84,7 +84,7 @@ module.exports = app => {
                 $inc: { itemQty: 1}
             })
             await Cart.update({customerId: req.user._id},{
-                $pull: { cartContents: { itemIds: id} },
+                $pull: { cartContents: { itemCount: 1, itemIds: id} },
                 multi: true
             })
         
