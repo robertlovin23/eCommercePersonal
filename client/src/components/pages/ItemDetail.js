@@ -114,12 +114,13 @@ class ItemDetail extends React.Component{
 
 
 
-    fetchItem = (_id) => {
+    fetchItem = (id) => {
+        console.log(this.props)
         if(!this.props.cart){
+            this.props.addToCart(id);
             this.props.makeCart();
-            this.props.addToCart(_id);
         } else {
-            this.props.addToCart(_id);
+            this.props.addToCart(id);
         }
     }
 
