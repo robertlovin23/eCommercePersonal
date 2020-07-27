@@ -16,7 +16,7 @@ module.exports = app => {
             }
         })
         console.log(payment)
-        if(payment && payment[0].totalPrice === 0){
+        if(payment){
             const intent = await stripe.paymentIntents.create({
                 amount: payment[0].totalPrice * 100,
                 currency: 'usd',
