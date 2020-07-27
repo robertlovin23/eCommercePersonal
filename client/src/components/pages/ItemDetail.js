@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import {fetchItem,addToCart,makeCart,fetchUsers,deleteComment,addCommentLike,deleteCommentLike} from '../../actions'
+import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 
 
 class ItemDetail extends React.Component{
@@ -113,12 +114,12 @@ class ItemDetail extends React.Component{
 
 
 
-    fetchItem = () => {
+    fetchItem = (_id) => {
         if(!this.props.cart){
-            this.props.addToCart(this.props.match.params.id);
             this.props.makeCart();
+            this.props.addToCart(_id);
         } else {
-            this.props.addToCart(this.props.match.params.id);
+            this.props.addToCart(_id);
         }
     }
 
@@ -150,7 +151,7 @@ class ItemDetail extends React.Component{
                                 </div>
 
                                 <br/>
-                                <Button variant="contained" color="primary" onClick={() => this.fetchItem()}>
+                                <Button variant="contained" color="primary" onClick={() => this.fetchItem(_id)}>
                                     Add to Cart
                                 </Button>
                                 <div style={{marginTop:"10px"}}>

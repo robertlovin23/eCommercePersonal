@@ -12,7 +12,7 @@ class CartList extends React.Component{
 
     componentDidMount(){
         // this.props.fetchItems();
-        this.props.makeCart();
+        // this.props.makeCart();
 
         // if(this.props.match.params.id){
         //     this.props.fetchCart(this.props.match.params.id)

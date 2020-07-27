@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import DeleteItem from '../pages/DeleteItem'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import { Container, Grid, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, IconButton, Typography, Dialog, DialogContentText, DialogContent,DialogTitle,DialogActions } from '@material-ui/core'
-import {fetchItems,fetchUser,addLike,deleteLike,deleteCart,deleteItem} from '../../actions'
+import {fetchItems,fetchUser,addLike,deleteLike,deleteFromCart,deleteItem} from '../../actions'
 
 class MainList extends React.Component{
     state = {
@@ -26,6 +26,7 @@ class MainList extends React.Component{
     componentDidMount(){
         this.props.fetchItems();
         console.log(this.props)
+    
     }
 
     renderLikes = (item) => {
@@ -176,5 +177,6 @@ export default connect(mapStateToProps,{
     fetchItems,
     addLike,
     deleteLike,
-    deleteItem
+    deleteItem,
+    deleteFromCart,
 })(MainList)
