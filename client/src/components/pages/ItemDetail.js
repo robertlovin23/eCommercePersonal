@@ -115,7 +115,7 @@ class ItemDetail extends React.Component{
 
 
     fetchItem = (id) => {
-        if(!this.props.cart && this.props.auth._id !== null){
+        if(this.props.cart === undefined && this.props.auth._id !== null){
             this.props.makeCart();
             this.props.addToCart(id);
         } else {
