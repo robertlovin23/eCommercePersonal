@@ -8,7 +8,7 @@ import CardSection from '../layout/card'
 class CheckoutForm extends React.Component {
 
   componentDidMount(){
-      this.props.fetchCart(this.props.match.params.url);
+      this.props.fetchCart(this.props.match.params.id);
   }
 
   handleSubmit = async (event) => {
