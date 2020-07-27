@@ -142,7 +142,6 @@ module.exports = app => {
 
     
     app.delete(`/api/items/:id`,  requireLogin, async (req,res) => {
-        
         var id = req.params.id
             await Item.remove({
                _id: id

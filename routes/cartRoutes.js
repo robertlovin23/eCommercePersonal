@@ -37,11 +37,11 @@ module.exports = app => {
                 return cart
             }
         })
-        // const cartCount = cart[0].cartContents.map(items => {
-        //     return items.itemCount
-        // })
+        const cartCount = cart[0].cartContents.map(items => {
+            return items.itemCount
+        })
 
-        // const itemPricing = item[0].itemPrice
+        const itemPricing = item[0].itemPrice
             await Cart.update({customerId: req.user._id, 'cartContents.itemIds': {$ne: id}},{
                     $addToSet: { cartContents: { itemIds: id, itemName: item[0].itemName, itemPrice: item[0].itemPrice }}
                 }
